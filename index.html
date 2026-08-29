@@ -94,14 +94,20 @@ async function renderNews() {
         : `<span class="news-title">${item.title}</span>`}
     </li>`;
 
+  // 開催日が過ぎたイベントは新着から外す（当日は残す）
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const upcoming = events.filter(e => new Date(e.date + 'T00:00:00') >= today);
+
+  // スプレッドシートの下の行が新しいので、逆順にして「登録が新しい順」にする
   const eventList = document.getElementById('event-news-list');
-  const sortedEvents = [...events].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  const sortedEvents = [...upcoming].reverse().slice(0, 20);
   eventList.innerHTML = sortedEvents.length
     ? sortedEvents.map(row).join('')
     : '<li class="empty-note">現在イベントの新着はありません</li>';
 
   const otherList = document.getElementById('other-news-list');
-  const sortedNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  const sortedNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 20);
   otherList.innerHTML = sortedNews.length
     ? sortedNews.map(row).join('')
     : '<li class="empty-note">現在お知らせの新着はありません</li>';
