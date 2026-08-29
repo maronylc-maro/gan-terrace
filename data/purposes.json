@@ -1,0 +1,39 @@
+[
+  {
+    "id": "talk",
+    "category": "集う",
+    "image": "images/talk.webp",
+    "desc": "同じ経験をした人や相談員と話せる場を探せます。",
+    "items": [
+      { "title": "患者会 ひまわりの会", "link": "https://example.com/himawari-kai" },
+      { "title": "みどり医療センター", "link": "https://example.com/midori-center/soudan" }
+    ]
+  },
+  {
+    "id": "move",
+    "category": "動く",
+    "image": "images/move.webp",
+    "desc": "体力に合わせて体を動かせる教室やリハビリの情報です。",
+    "items": [
+      { "title": "さくら総合病院", "link": "https://example.com/sakura-hospital/rehab" }
+    ]
+  },
+  {
+    "id": "learn",
+    "category": "学ぶ",
+    "image": "images/learn.webp",
+    "desc": "病気や治療について基礎から学べる資料や講座です。",
+    "items": [
+      { "title": "みどり医療センター", "link": "https://example.com/midori-center/guide" }
+    ]
+  },
+  {
+    "id": "know",
+    "category": "装う",
+    "image": "images/know.webp",
+    "desc": "髪や肌など、見た目の変化のケアについて相談できます。",
+    "items": [
+      { "title": "はな皮膚科クリニック", "link": "https://example.com/hana-clinic/appearance" }
+    ]
+  }
+]

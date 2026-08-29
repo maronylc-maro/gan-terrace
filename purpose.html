@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>目的別情報｜がんテラス</title>
+<meta name="description" content="「集う・動く・学ぶ・装う」の目的別に、関西のがん患者さんとご家族が利用できる患者会・病院・支援団体の情報をまとめています。気になる団体の関連イベントもカレンダーで確認できます。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="がんテラス">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="目的別情報｜がんテラス">
+<meta property="og:description" content="「集う・動く・学ぶ・装う」の目的別に、関西のがん患者さんとご家族が利用できる患者会・病院・支援団体の情報をまとめています。気になる団体の関連イベントもカレンダーで確認できます。">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="index.html">がんテラス</a>
+    <nav class="global-nav">
+      <a href="index.html#purpose" class="active">目的別情報</a>
+      <a href="index.html#news">新着一覧</a>
+      <a href="calendar.html">イベントカレンダー</a>
+      <a href="facilities.html">施設・団体リンク集</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1 class="page-title">目的別情報</h1>
+
+  <nav class="cat-switch" id="cat-switch"></nav>
+
+  <section id="cat-body"></section>
+</main>
+
+<footer class="site-footer">
+  <a class="contact-link" href="https://forms.gle/fDiuYthCgm81dF9K8" target="_blank" rel="noopener">お問い合わせ</a>
+  <p class="footer-note">© がんテラス</p>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+let PURPOSES = [];
+
+function renderSwitch(activeId) {
+  document.getElementById('cat-switch').innerHTML = PURPOSES.map(cat => `
+    <button type="button" data-id="${cat.id}" class="${cat.id === activeId ? 'active' : ''}">${cat.category}</button>
+  `).join('');
+
+  document.querySelectorAll('#cat-switch button').forEach(btn => {
+    btn.addEventListener('click', () => show(btn.dataset.id));
+  });
+}
+
+function show(id) {
+  const cat = PURPOSES.find(c => c.id === id) || PURPOSES[0];
+  renderSwitch(cat.id);
+
+  document.getElementById('cat-body').innerHTML = `
+    <div class="cat-head">
+      <img src="${cat.image}" alt="">
+      <div>
+        <h2>${cat.category}</h2>
+        <p>${cat.desc || ''}</p>
+      </div>
+    </div>
+    <ul class="purpose-items">
+      ${cat.items.map(item => `
+        <li>
+          <span class="purpose-name">${item.title}</span>
+          <a href="${item.link}" target="_blank" rel="noopener">サイトへ</a>
+          <a href="calendar.html?related=${encodeURIComponent(item.title)}">関連イベント</a>
+        </li>
+      `).join('')}
+    </ul>
+  `;
+
+  history.replaceState(null, '', 'purpose.html?cat=' + encodeURIComponent(cat.id));
+}
+
+async function init() {
+  PURPOSES = await loadJSON('data/purposes.json');
+  if (!PURPOSES.length) return;
+  const params = new URLSearchParams(window.location.search);
+  show(params.get('cat') || PURPOSES[0].id);
+}
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施設・団体リンク集｜がんテラス</title>
+<meta name="description" content="関西のがん患者さんとご家族が相談できる病院・クリニック・患者会・支援団体の一覧。それぞれの公式サイトと、地図で場所を確認できるリンクを掲載しています。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="がんテラス">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="施設・団体リンク集｜がんテラス">
+<meta property="og:description" content="関西のがん患者さんとご家族が相談できる病院・クリニック・患者会・支援団体の一覧。それぞれの公式サイトと、地図で場所を確認できるリンクを掲載しています。">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="index.html">がんテラス</a>
+    <nav class="global-nav">
+      <a href="index.html#purpose">目的別情報</a>
+      <a href="index.html#news">新着一覧</a>
+      <a href="calendar.html">イベントカレンダー</a>
+      <a href="facilities.html" class="active">施設・団体リンク集</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1 class="page-title">施設・団体リンク集</h1>
+  <ul class="facility-list" id="facility-list"></ul>
+</main>
+
+<footer class="site-footer">
+  <a class="contact-link" href="https://forms.gle/fDiuYthCgm81dF9K8" target="_blank" rel="noopener">お問い合わせ</a>
+  <p class="footer-note">© がんテラス</p>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+async function render() {
+  const list = document.getElementById('facility-list');
+  const facilities = await loadJSON('data/facilities.json');
+  list.innerHTML = facilities.map(f => `
+    <li class="facility-item">
+      <span class="facility-name">${f.name}</span>
+      <div class="facility-actions">
+        ${f.url ? `<a class="site-link" href="${f.url}" target="_blank" rel="noopener">ホームページ</a>` : ''}
+        ${f.map ? `<a class="map-link" href="${f.map}" target="_blank" rel="noopener">マップ</a>` : ''}
+      </div>
+    </li>
+  `).join('');
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>がんテラス｜関西のがん患者さんとご家族の「見つける」ポータルサイト</title>
+<meta name="description" content="関西のがん患者さんとご家族が「集う・動く・学ぶ・装う」場を見つけるためのポータルサイト。地域の患者会や病院の取り組み、イベント情報、施設・団体のリンク集をまとめています。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="がんテラス">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="がんテラス｜関西のがん患者さんとご家族の「見つける」ポータルサイト">
+<meta property="og:description" content="関西のがん患者さんとご家族が「集う・動く・学ぶ・装う」場を見つけるためのポータルサイト。地域の患者会や病院の取り組み、イベント情報、施設・団体のリンク集をまとめています。">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-brand">
+      <a class="site-logo" href="index.html">がんテラス</a>
+      <p class="site-tagline">関西のがん患者さんとご家族の「見つける」ポータルサイト</p>
+    </div>
+
+    <nav class="global-nav">
+      <a href="index.html#purpose">目的別情報</a>
+      <a href="index.html#news">新着一覧</a>
+      <a href="calendar.html">イベントカレンダー</a>
+      <a href="facilities.html">施設・団体リンク集</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container top-main">
+
+  <section class="block anchor-target" id="purpose">
+    <div class="block-head">
+      <h2>目的別情報</h2>
+    </div>
+    <div class="purpose-grid" id="purpose-grid"></div>
+  </section>
+
+  <section class="block anchor-target" id="news">
+    <div class="block-head">
+      <h2>新着一覧</h2>
+    </div>
+    <div class="news-columns">
+      <div class="news-col">
+        <h3>イベント新着</h3>
+        <ul class="news-list" id="event-news-list"></ul>
+      </div>
+      <div class="news-col">
+        <h3>お知らせ新着</h3>
+        <ul class="news-list" id="other-news-list"></ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <a class="contact-link" href="https://forms.gle/fDiuYthCgm81dF9K8" target="_blank" rel="noopener">お問い合わせ</a>
+  <p class="footer-note">© がんテラス</p>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+async function renderPurposes() {
+  const grid = document.getElementById('purpose-grid');
+  const purposes = await loadJSON('data/purposes.json');
+  grid.innerHTML = purposes.map(cat => `
+    <a class="purpose-card" href="purpose.html?cat=${encodeURIComponent(cat.id)}">
+      <h3>${cat.category}</h3>
+      <div class="purpose-card-body">
+        <img src="${cat.image}" alt="" loading="lazy">
+        <p class="purpose-desc">${cat.desc || ''}</p>
+      </div>
+    </a>
+  `).join('');
+}
+
+async function renderNews() {
+  const [events, news] = await Promise.all([
+    loadJSON('data/events.json'),
+    loadJSON('data/news.json')
+  ]);
+
+  const row = item => `
+    <li>
+      <span class="news-date">${formatDate(item.date)}</span>
+      <a href="${item.link}" target="_blank" rel="noopener">${item.title}</a>
+    </li>`;
+
+  const eventList = document.getElementById('event-news-list');
+  const sortedEvents = [...events].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  eventList.innerHTML = sortedEvents.length
+    ? sortedEvents.map(row).join('')
+    : '<li class="empty-note">現在イベントの新着はありません</li>';
+
+  const otherList = document.getElementById('other-news-list');
+  const sortedNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  otherList.innerHTML = sortedNews.length
+    ? sortedNews.map(row).join('')
+    : '<li class="empty-note">現在お知らせの新着はありません</li>';
+}
+
+renderPurposes();
+renderNews();
+</script>
+</body>
+</html>

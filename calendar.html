@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イベントカレンダー｜がんテラス</title>
+<meta name="description" content="関西で開かれる、がん患者さんとご家族向けの交流会・講座・相談会などのイベント情報。月・週・リスト表示で探せて、気になるイベントはGoogleカレンダーに追加できます。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="がんテラス">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="イベントカレンダー｜がんテラス">
+<meta property="og:description" content="関西で開かれる、がん患者さんとご家族向けの交流会・講座・相談会などのイベント情報。月・週・リスト表示で探せて、気になるイベントはGoogleカレンダーに追加できます。">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="index.html">がんテラス</a>
+    <nav class="global-nav">
+      <a href="index.html#purpose">目的別情報</a>
+      <a href="index.html#news">新着一覧</a>
+      <a href="calendar.html" class="active">イベントカレンダー</a>
+      <a href="facilities.html">施設・団体リンク集</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1 class="page-title">イベントカレンダー</h1>
+
+  <div id="filter-note"></div>
+
+  <div class="calendar-toolbar">
+    <div class="calendar-nav">
+      <button id="nav-prev">＜</button>
+      <span class="calendar-title" id="calendar-title"></span>
+      <button id="nav-next">＞</button>
+      <button id="nav-today">今日</button>
+    </div>
+    <div class="view-switch">
+      <button id="view-month" class="active">月</button>
+      <button id="view-week">週</button>
+      <button id="view-list">リスト</button>
+    </div>
+  </div>
+
+  <div id="calendar-body"></div>
+</main>
+
+<footer class="site-footer">
+  <a class="contact-link" href="https://forms.gle/fDiuYthCgm81dF9K8" target="_blank" rel="noopener">お問い合わせ</a>
+  <p class="footer-note">© がんテラス</p>
+</footer>
+
+<div class="overlay" id="event-overlay" onclick="if(event.target===this) closeEventPopup()">
+  <div class="popup" id="event-popup-body"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/likes.js"></script>
+<script src="js/common.js"></script>
+<script src="js/calendar.js"></script>
+</body>
+</html>
