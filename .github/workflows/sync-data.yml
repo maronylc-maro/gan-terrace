@@ -1,0 +1,31 @@
+name: スプレッドシートをサイトに反映
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Python をセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: スプレッドシートを取得してJSONを更新
+        env:
+          SHEETS_API_URL: ${{ secrets.SHEETS_API_URL }}
+        run: python scripts/sync_sheets.py
+
+      - name: 変更をコミットしてpush
+        run: |
+          git config user.name "sync-bot"
+          git config user.email "sync-bot@users.noreply.github.com"
+          git add data/*.json
+          git diff --cached --quiet && echo "変更なし" || git commit -m "データ反映: スプレッドシートの内容を更新"
+          git push
