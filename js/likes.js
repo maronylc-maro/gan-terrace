@@ -65,14 +65,13 @@ async function sendLike(btn) {
   const key = btn.dataset.key;
   if (!key || hasLiked(key)) return;
 
-  markLiked(key);
-  btn.classList.add('liked');
-  btn.disabled = true;
-  btn.title = '気になるを送信済みです';
+  const countEl = btn.querySelector('.like-count');
+  const before = LIKE_COUNTS[key] || 0;
 
   // 先に画面へ反映し、あとから正しい値で上書きする
-  const countEl = btn.querySelector('.like-count');
-  LIKE_COUNTS[key] = (LIKE_COUNTS[key] || 0) + 1;
+  btn.disabled = true;
+  btn.classList.add('liked');
+  LIKE_COUNTS[key] = before + 1;
   countEl.textContent = LIKE_COUNTS[key];
 
   try {
@@ -82,12 +81,23 @@ async function sendLike(btn) {
       body: JSON.stringify({ key: key })
     });
     const data = await res.json();
-    if (data && typeof data.count === 'number') {
-      LIKE_COUNTS[key] = data.count;
-      countEl.textContent = data.count;
+
+    if (!data || !data.ok || typeof data.count !== 'number') {
+      throw new Error((data && data.error) || '送信に失敗しました');
     }
+
+    LIKE_COUNTS[key] = data.count;
+    countEl.textContent = data.count;
+    markLiked(key);
+    btn.title = '気になるを送信済みです';
+
   } catch (e) {
+    // 失敗したら表示を元に戻し、もう一度押せるようにする
     console.error('気になるの送信に失敗しました', e);
+    LIKE_COUNTS[key] = before;
+    countEl.textContent = before;
+    btn.classList.remove('liked');
+    btn.disabled = false;
   }
 }
 
