@@ -19,10 +19,10 @@
   <div class="site-header-inner">
     <a class="site-logo" href="index.html">がんテラス</a>
     <nav class="global-nav">
-      <a href="index.html#purpose">目的別情報</a>
+      <a href="index.html#purpose">TOP</a>
+      <a href="calendar.html">イベント</a>
       <a href="index.html#news">新着一覧</a>
-      <a href="calendar.html">イベントカレンダー</a>
-      <a href="facilities.html" class="active">施設・団体リンク集</a>
+      <a href="facilities.html" class="active">リンク集</a>
     </nav>
   </div>
 </header>
@@ -39,6 +39,10 @@
 
 <script src="js/common.js"></script>
 <script>
+// アイコン（Material Symbols）。色はボタンの文字色に追従する
+const ICON_HOME = '<svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M226.67-186.67h140v-246.66h226.66v246.66h140v-380L480-756.67l-253.33 190v380ZM160-120v-480l320-240 320 240v480H526.67v-246.67h-93.34V-120H160Zm320-352Z"/></svg>';
+const ICON_MAP = '<svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="m608-120-255.33-90-181.34 71.33q-18 8.67-34.66-2.16Q120-151.67 120-172v-558.67q0-13 7.5-23t19.83-15L352.67-840 608-750.67 788.67-822q18-8 34.66 2.5Q840-809 840-788.67v563.34q0 11.66-7.5 20.33-7.5 8.67-19.17 13L608-120Zm-36-82.67v-492.66L388-758v492.67l184 62.66Zm66.67 0 134.66-44.66v-499.34l-134.66 51.34v492.66Zm-452-11.33 134.66-51.33V-758l-134.66 44.67V-214Zm452-481.33v492.66-492.66ZM321.33-758v492.67V-758Z"/></svg>';
+
 async function render() {
   const list = document.getElementById('facility-list');
   const facilities = await loadJSON('data/facilities.json');
@@ -46,8 +50,8 @@ async function render() {
     <li class="facility-item">
       <span class="facility-name">${f.name}</span>
       <div class="facility-actions">
-        ${f.url ? `<a class="site-link" href="${f.url}" target="_blank" rel="noopener">ホームページ</a>` : ''}
-        ${f.map ? `<a class="map-link" href="${f.map}" target="_blank" rel="noopener">マップ</a>` : ''}
+        ${f.url ? `<a class="site-link" href="${f.url}" target="_blank" rel="noopener" title="ホームページを開く" aria-label="${f.name} のホームページを開く">${ICON_HOME}</a>` : ''}
+        ${f.map ? `<a class="map-link" href="${f.map}" target="_blank" rel="noopener" title="地図で見る" aria-label="${f.name} を地図で見る">${ICON_MAP}</a>` : ''}
       </div>
     </li>
   `).join('');

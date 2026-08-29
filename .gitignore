@@ -1,0 +1,11 @@
+# 内部メモ・作業用ファイル（公開サイトに載せない）
+TODO.md
+*.xlsx
+
+# .github/workflows/ に置いたものが本体
+/sync-data.yml
+
+# OS が作る不要ファイル
+.DS_Store
+Thumbs.db
+desktop.ini

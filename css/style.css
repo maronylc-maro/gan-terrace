@@ -328,11 +328,14 @@ a.purpose-card h3 {
   color: var(--color-main-dark);
 }
 
-.news-list a {
+.news-list a,
+.news-list .news-title {
   text-decoration: none;
   font-weight: 500;
   font-size: 16px;
 }
+
+.news-list .news-title { color: var(--color-text); }
 .news-list a:hover { text-decoration: underline; }
 
 /* 施設・団体リンク集 */
@@ -367,11 +370,21 @@ a.purpose-card h3 {
 }
 
 .facility-actions a {
-  font-size: 14px;
-  padding: 6px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 36px;
   border-radius: 999px;
   text-decoration: none;
-  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.btn-icon {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+  display: block;
 }
 
 .facility-actions .site-link {
@@ -782,21 +795,10 @@ body.popup-open { overflow: hidden; }
   }
   .day-cell .event-pill.highlight { background: var(--color-accent); opacity: 1; }
 
-  /* スマホは施設名を1行使い、ボタンはその下に並べる */
-  .facility-item {
-    padding: 12px 14px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 9px;
-  }
+  .facility-item { padding: 11px 14px; gap: 10px; }
   .facility-name { font-size: 16px; }
   .facility-actions { gap: 8px; }
-  .facility-actions a {
-    flex: 1;
-    padding: 7px 12px;
-    font-size: 13px;
-    text-align: center;
-  }
+  .facility-actions a { width: 52px; height: 38px; }
   .week-date, .list-date { width: 68px; font-size: 14px; }
 
   .popup { padding: 0 16px 18px; max-height: 88vh; }

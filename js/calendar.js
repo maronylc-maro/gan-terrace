@@ -19,6 +19,7 @@ function isHighlighted(event) {
 
 async function initCalendar() {
   ALL_EVENTS = await loadJSON('data/events.json');
+  if (typeof loadLikes === 'function') await loadLikes();
 
   const params = new URLSearchParams(window.location.search);
   HIGHLIGHT_KEY = params.get('related');

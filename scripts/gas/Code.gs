@@ -145,6 +145,24 @@ function readLikes_() {
   return counts;
 }
 
+/**
+ * 送られてきたキーが eventsシートに実在するイベントのものか確かめる。
+ * これを通さないと、任意の文字列で likes シートに行を追加されてしまう。
+ */
+function isKnownEventKey_(key) {
+  var sheet = getBook_().getSheetByName('events');
+  if (!sheet) return false;
+
+  var values = sheet.getDataRange().getValues();
+  for (var i = 1; i < values.length; i++) {
+    var date = normalizeDate_(values[i][0]);
+    var title = String(values[i][1] == null ? '' : values[i][1]).trim();
+    if (!date || !title) continue;
+    if (date + '|' + title === key) return true;
+  }
+  return false;
+}
+
 
 // ===== エントリポイント =====
 
@@ -176,6 +194,11 @@ function doPost(e) {
     var body = JSON.parse(e.postData.contents);
     var key = String(body.key || '').slice(0, 300);
     if (!key) return json_({ ok: false, error: 'キーがありません' });
+
+    // 実在しないイベントは受け付けない（likesシートへの不正な行追加を防ぐ）
+    if (!isKnownEventKey_(key)) {
+      return json_({ ok: false, error: '対象のイベントが見つかりません' });
+    }
 
     var sheet = getLikesSheet_();
     var values = sheet.getDataRange().getValues();
