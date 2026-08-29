@@ -387,18 +387,14 @@ a.purpose-card h3 {
   display: block;
 }
 
-.facility-actions .site-link {
+.facility-actions .site-link,
+.facility-actions .map-link {
   background: var(--color-main);
   color: #fff;
 }
-.facility-actions .site-link:hover { background: var(--color-main-dark); }
 
-.facility-actions .map-link {
-  background: #fff;
-  border: 1px solid var(--color-main);
-  color: var(--color-main-dark);
-}
-.facility-actions .map-link:hover { background: var(--color-border); }
+.facility-actions .site-link:hover,
+.facility-actions .map-link:hover { background: var(--color-main-dark); }
 
 /* カレンダー */
 .calendar-toolbar {
