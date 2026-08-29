@@ -19,7 +19,6 @@ function isHighlighted(event) {
 
 async function initCalendar() {
   ALL_EVENTS = await loadJSON('data/events.json');
-  if (typeof loadLikes === 'function') await loadLikes();
 
   const params = new URLSearchParams(window.location.search);
   HIGHLIGHT_KEY = params.get('related');
@@ -33,6 +32,9 @@ async function initCalendar() {
   document.getElementById('nav-today').addEventListener('click', () => { CURRENT_DATE = new Date(); render(); });
 
   render();
+
+  // 「気になる」の件数はカレンダー表示を待たせず、あとから取得する
+  if (typeof loadLikes === 'function') loadLikes();
 }
 
 function renderFilterNote() {

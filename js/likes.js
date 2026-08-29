@@ -2,6 +2,7 @@
 
 const LIKE_STORAGE_KEY = 'machino-iryou-likes';
 let LIKE_COUNTS = {};
+let LIKES_LOADED = null;   // 件数の取得が終わったかを表すPromise
 
 function likeEnabled() {
   return !!(window.LIKE_API_URL && window.LIKE_API_URL.trim());
@@ -12,15 +13,33 @@ function likeKey(ev) {
   return `${ev.date}|${ev.title}`;
 }
 
-async function loadLikes() {
-  if (!likeEnabled()) return;
-  try {
-    const res = await fetch(window.LIKE_API_URL, { method: 'GET' });
-    const data = await res.json();
-    if (data && data.counts) LIKE_COUNTS = data.counts;
-  } catch (e) {
-    console.error('気になる数の取得に失敗しました', e);
-  }
+function loadLikes() {
+  if (!likeEnabled()) return Promise.resolve();
+
+  LIKES_LOADED = fetch(window.LIKE_API_URL, { method: 'GET' })
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.counts) LIKE_COUNTS = data.counts;
+      // 取得前に開かれたポップアップがあれば、数字を最新にする
+      refreshLikeCounts();
+    })
+    .catch(e => {
+      console.error('気になる数の取得に失敗しました', e);
+    });
+
+  return LIKES_LOADED;
+}
+
+/** 表示中の「気になる」ボタンの数字を、取得済みの件数で更新する */
+function refreshLikeCounts(container) {
+  const scope = container || document;
+  scope.querySelectorAll('.like-btn').forEach(btn => {
+    const key = btn.dataset.key;
+    const countEl = btn.querySelector('.like-count');
+    // すでに押したボタンは、送信時の値をそのまま残す
+    if (!countEl || hasLiked(key)) return;
+    countEl.textContent = LIKE_COUNTS[key] || 0;
+  });
 }
 
 function likedKeys() {

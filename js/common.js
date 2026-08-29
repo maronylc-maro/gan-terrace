@@ -72,6 +72,11 @@ function showDayPopup(dateKey, events, highlightKey) {
   overlay.classList.add('open');
   box.scrollTop = 0;
   document.body.classList.add('popup-open');
+
+  // 「気になる」の件数がまだ取得中なら、届いた時点で数字を差し替える
+  if (typeof LIKES_LOADED !== 'undefined' && LIKES_LOADED) {
+    LIKES_LOADED.then(() => refreshLikeCounts(box));
+  }
 }
 
 function closeEventPopup() {
