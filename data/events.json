@@ -5,7 +5,7 @@
     "place": "市立東大阪医療センター3階A会議室",
     "summary": "自分らしく過ごすためのアピアランスケア～スキンケアから始めるトータルケア～",
     "link": "https://www.higashiosaka-mc.jp/data/media/higashiosaka_mc/page/outpatient/consultation/cancer/pdf/event202609_01.pdf",
-    "related": "市立東大阪医療センター"
+    "related": "市立東大阪医療センターがん相談支援センター"
   },
   {
     "date": "2026-09-03",
@@ -13,7 +13,7 @@
     "place": "八尾市立病院1階待合ロビー",
     "summary": "読売日本交響楽団の皆さんによる弦楽四重奏クラシックや親しみのある名曲で患者や家族の心を癒します",
     "link": "https://www.hospital.yao.osaka.jp/yaowp/wp-content/uploads/2026/08/20260903_concert.pdf",
-    "related": "八尾市立病院"
+    "related": "八尾市立病院がん相談支援センター"
   },
   {
     "date": "2026-09-03",
@@ -21,6 +21,38 @@
     "place": "八尾市立病院北館301",
     "summary": "コンサートの前に皆でおしゃべり会",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院"
+    "related": "八尾市立病院がん相談支援センター"
+  },
+  {
+    "date": "2026-09-03",
+    "title": "女性がん患者の会 ハーブ",
+    "place": "大阪医療センターボランティア室",
+    "summary": "乳がん・子宮がん等を体験した女性同士で語る会〘要事前問い合わせ〙",
+    "link": "https://osaka.hosp.go.jp/volunteer/activity/index.html",
+    "related": "国立病院機構大阪医療センター"
+  },
+  {
+    "date": "2026-09-07",
+    "title": "かしわらサロン",
+    "place": "市立柏原病院2階会議室",
+    "summary": "マスキングテープBOXワークショップ",
+    "link": "https://www.instagram.com/p/DcVWy_dxY2P/?igsi=MWUwcWx3YzBpaGkwag==",
+    "related": "市立柏原病院がん相談支援センター"
+  },
+  {
+    "date": "2026-09-08",
+    "title": "やお徳サロン",
+    "place": "八尾徳洲会総合病院南館3階第2会議室",
+    "summary": "レッツ！キャンサーケアヨガ（椅子に座って行います）",
+    "link": "https://www.yao.tokushukai.or.jp/dl/oncology/salon/yaotoku09_202512.pdf",
+    "related": "八尾徳洲会総合病院がん相談支援センター"
+  },
+  {
+    "date": "2026-09-12",
+    "title": "つながりひろばウォーキング教室2026①",
+    "place": "大阪国際がんセンター患者交流棟2階つながりひろば",
+    "summary": "がん専門運動士に基礎から学べるウォーキング教室全6回シリーズ",
+    "link": "https://tsunagari.osaka.jp/2026/08/12/%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%E6%95%99%E5%AE%A42026%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/",
+    "related": "NPO法人つながりひろば"
   }
 ]
