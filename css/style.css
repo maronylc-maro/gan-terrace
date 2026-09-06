@@ -542,12 +542,27 @@ a.purpose-card h3 {
 
 .week-date, .list-date {
   flex: none;
-  width: 84px;
+  width: 88px;
   font-size: 14px;
   color: var(--color-text-sub);
+  white-space: nowrap;
 }
 
-.week-events, .list-events { flex: 1; }
+/* min-width を 0 にしないと、長い件名で行が横にはみ出す */
+.week-events, .list-events {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 週・リストでは件名を省略せず折り返す */
+.week-events .event-pill,
+.list-events .event-pill {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.5;
+  padding: 5px 8px;
+}
 
 /* ポップアップ */
 .overlay {
@@ -830,11 +845,15 @@ body.popup-open { overflow: hidden; }
   }
   .day-cell .event-pill.highlight { background: var(--color-accent); opacity: 1; }
 
+  .week-row, .list-row { gap: 10px; }
+  .week-events .event-pill,
+  .list-events .event-pill { font-size: 13px; }
+
   .facility-item { padding: 11px 14px; gap: 10px; }
   .facility-name { font-size: 16px; }
   .facility-actions { gap: 8px; }
   .facility-actions a { width: 52px; height: 38px; }
-  .week-date, .list-date { width: 68px; font-size: 14px; }
+  .week-date, .list-date { width: 82px; font-size: 13px; }
 
   .popup { padding: 0 16px 18px; max-height: 88vh; }
   .popup-head { padding: 16px 0 9px; margin-bottom: 10px; }

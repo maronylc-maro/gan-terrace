@@ -173,7 +173,7 @@ function renderWeek(body, start) {
 
     const dateEl = document.createElement('div');
     dateEl.className = 'week-date';
-    dateEl.textContent = `${d.getMonth() + 1}/${d.getDate()}（${DOW[d.getDay()]}）`;
+    dateEl.textContent = formatShortDate(key);
     row.appendChild(dateEl);
 
     const evWrap = document.createElement('div');
@@ -223,7 +223,7 @@ function renderList(body) {
     row.className = 'list-row';
     const dateEl = document.createElement('div');
     dateEl.className = 'list-date';
-    dateEl.textContent = formatDate(dateKey);
+    dateEl.textContent = formatShortDate(dateKey);
     row.appendChild(dateEl);
 
     const wrap = document.createElement('div');

@@ -25,6 +25,13 @@ function formatDateWithYear(dateStr) {
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
 }
 
+// 週表示・リスト表示で使う短い日付（例: 9/3（木））
+function formatShortDate(dateStr) {
+  const dow = ['日', '月', '火', '水', '木', '金', '土'];
+  const d = new Date(dateStr + 'T00:00:00');
+  return `${d.getMonth() + 1}/${d.getDate()}（${dow[d.getDay()]}）`;
+}
+
 function formatDateWithDow(dateStr) {
   const dow = ['日', '月', '火', '水', '木', '金', '土'];
   const d = new Date(dateStr + 'T00:00:00');
