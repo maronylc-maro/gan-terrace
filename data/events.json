@@ -5,7 +5,7 @@
     "place": "市立東大阪医療センター3階A会議室",
     "summary": "自分らしく過ごすためのアピアランスケア～スキンケアから始めるトータルケア～",
     "link": "https://www.higashiosaka-mc.jp/data/media/higashiosaka_mc/page/outpatient/consultation/cancer/pdf/event202609_01.pdf",
-    "related": "市立東大阪医療センターがん相談支援センター"
+    "related": "市立東大阪医療センター「緩和サロンたんぽぽ」"
   },
   {
     "date": "2026-09-03",
@@ -13,7 +13,7 @@
     "place": "八尾市立病院1階待合ロビー",
     "summary": "読売日本交響楽団の皆さんによる弦楽四重奏クラシックや親しみのある名曲で患者や家族の心を癒します",
     "link": "https://www.hospital.yao.osaka.jp/yaowp/wp-content/uploads/2026/08/20260903_concert.pdf",
-    "related": "八尾市立病院がん相談支援センター"
+    "related": "八尾市立病院「きらきら若ごぼうの会」"
   },
   {
     "date": "2026-09-03",
@@ -21,7 +21,7 @@
     "place": "八尾市立病院北館301",
     "summary": "コンサートの前に皆でおしゃべり会",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院がん相談支援センター"
+    "related": "八尾市立病院「きらきら若ごぼうの会」"
   },
   {
     "date": "2026-09-03",
@@ -29,7 +29,7 @@
     "place": "大阪医療センターボランティア室",
     "summary": "乳がん・子宮がん等を体験した女性同士で語る会〘要事前問い合わせ〙",
     "link": "https://osaka.hosp.go.jp/volunteer/activity/index.html",
-    "related": "国立病院機構大阪医療センター"
+    "related": "大阪医療センター「女性がん患者の会 ハーブ」"
   },
   {
     "date": "2026-09-07",
@@ -237,7 +237,7 @@
     "place": "レンタルオフィスクレドール4階",
     "summary": "マインドフルネス＆体操とカフェTime",
     "link": "https://gantetsugaku.org/wp/wp-content/uploads/2026/08/%E5%A4%A7%E9%98%AA%E8%B0%B7%E7%94%BA%E3%81%8C%E3%82%93%E5%93%B2%E5%AD%A6%E5%A4%96%E6%9D%A5%E3%82%AB%E3%83%95%E3%82%A79%E6%9C%8826%E6%97%A5.pdf",
-    "related": "女性がん患者の会ハーブ"
+    "related": "一般社団法人 がん哲学外来"
   },
   {
     "date": "2026-09-26",
@@ -301,6 +301,78 @@
     "place": "大阪医療センター1階ロビー",
     "summary": "おしゃべりや体験講座でホッとできる時間を",
     "link": "https://osaka.hosp.go.jp/cancer/event/index.html",
-    "related": "国立病院機構大阪医療センター"
+    "related": "大阪医療センター「リボンズハウス」"
+  },
+  {
+    "date": "2026-09-25",
+    "title": "がんサロン",
+    "place": "大阪市立総合医療センター3階さくらホールロビー",
+    "summary": "お互いの体験を語り合い悩みを共有したり、資料で情報を得る場",
+    "link": "https://www.osakacity-hp.or.jp/ocgh/wp-content/uploads/2026/03/2514d243bfc9f594548453e0ecd11bbf.pdf",
+    "related": "大阪市立総合医療センター「がんサロン」"
+  },
+  {
+    "date": "2026-10-26",
+    "title": "がんサロン",
+    "place": "大阪市立総合医療センター3階さくらホールロビー",
+    "summary": "お互いの体験を語り合い悩みを共有したり、資料で情報を得る場",
+    "link": "https://www.osakacity-hp.or.jp/ocgh/wp-content/uploads/2026/03/2514d243bfc9f594548453e0ecd11bbf.pdf",
+    "related": "大阪市立総合医療センター「がんサロン」"
+  },
+  {
+    "date": "2026-11-27",
+    "title": "がんサロン",
+    "place": "大阪市立総合医療センター3階さくらホールロビー",
+    "summary": "お互いの体験を語り合い悩みを共有したり、資料で情報を得る場",
+    "link": "https://www.osakacity-hp.or.jp/ocgh/wp-content/uploads/2026/03/2514d243bfc9f594548453e0ecd11bbf.pdf",
+    "related": "大阪市立総合医療センター「がんサロン」"
+  },
+  {
+    "date": "2026-12-25",
+    "title": "がんサロン",
+    "place": "大阪市立総合医療センター3階さくらホールロビー",
+    "summary": "お互いの体験を語り合い悩みを共有したり、資料で情報を得る場",
+    "link": "https://www.osakacity-hp.or.jp/ocgh/wp-content/uploads/2026/03/2514d243bfc9f594548453e0ecd11bbf.pdf",
+    "related": "大阪市立総合医療センター「がんサロン」"
+  },
+  {
+    "date": "2027-01-22",
+    "title": "がんサロン",
+    "place": "大阪市立総合医療センター3階さくらホールロビー",
+    "summary": "お互いの体験を語り合い悩みを共有したり、資料で情報を得る場",
+    "link": "https://www.osakacity-hp.or.jp/ocgh/wp-content/uploads/2026/03/2514d243bfc9f594548453e0ecd11bbf.pdf",
+    "related": "大阪市立総合医療センター「がんサロン」"
+  },
+  {
+    "date": "2027-02-26",
+    "title": "がんサロン",
+    "place": "大阪市立総合医療センター3階さくらホールロビー",
+    "summary": "お互いの体験を語り合い悩みを共有したり、資料で情報を得る場",
+    "link": "https://www.osakacity-hp.or.jp/ocgh/wp-content/uploads/2026/03/2514d243bfc9f594548453e0ecd11bbf.pdf",
+    "related": "大阪市立総合医療センター「がんサロン」"
+  },
+  {
+    "date": "2027-03-26",
+    "title": "がんサロン",
+    "place": "大阪市立総合医療センター3階さくらホールロビー",
+    "summary": "お互いの体験を語り合い悩みを共有したり、資料で情報を得る場",
+    "link": "https://www.osakacity-hp.or.jp/ocgh/wp-content/uploads/2026/03/2514d243bfc9f594548453e0ecd11bbf.pdf",
+    "related": "大阪市立総合医療センター「がんサロン」"
+  },
+  {
+    "date": "2026-09-11",
+    "title": "TOYONAKA AYA トーク",
+    "place": "市立豊中病院 健康教室棟〘ZOOM参加可〙",
+    "summary": "情報交換、トークタイム",
+    "link": "https://www.city.toyonaka.osaka.jp/hp/outpatient/section/soudan/kanjasalon.files/20260911aya2.pdf",
+    "related": "市立豊中病院「患者サロン」"
+  },
+  {
+    "date": "2026-09-28",
+    "title": "とよなかがんサロン",
+    "place": "市立豊中病院 健康教室棟",
+    "summary": "あなたの体験やお悩みを話してみませんか",
+    "link": "https://www.city.toyonaka.osaka.jp/hp/outpatient/section/soudan/kanjasalon.files/202609gansalon.pdf",
+    "related": "市立豊中病院「患者サロン」"
   }
 ]

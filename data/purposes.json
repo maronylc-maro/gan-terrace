@@ -3,11 +3,71 @@
     "id": "talk",
     "category": "集う",
     "image": "images/talk.webp",
-    "desc": "同じ経験をした人や相談員と話せる場を探せます。",
+    "desc": "話をしたい聴きたい　講座やワークショップに参加したい",
     "items": [
       {
-        "title": "市立東大阪医療センターがん相談支援センター",
-        "link": "https://www.higashiosaka-mc.jp/outpatient/consultation/cancer.html"
+        "title": "市立東大阪医療センター「乳がん会さくら」",
+        "link": "https://www.higashiosaka-mc.jp/data/media/higashiosaka_mc/page/outpatient/consultation/cancer/pdf/event202604_02.pdf"
+      },
+      {
+        "title": "市立東大阪医療センター「緩和サロンたんぽぽ」",
+        "link": "https://www.higashiosaka-mc.jp/data/media/higashiosaka_mc/page/outpatient/consultation/cancer/pdf/event202604_04.pdf"
+      },
+      {
+        "title": "八尾市立病院患者サロン「きらきら若ごぼうの会」",
+        "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024"
+      },
+      {
+        "title": "大阪国際がんセンター「1・3・5の会」",
+        "link": "https://cancergroup135.jimdofree.com/"
+      },
+      {
+        "title": "大阪医療センター「女性がん患者の会 ハーブ」",
+        "link": "https://osaka.hosp.go.jp/volunteer/activity/index.html"
+      },
+      {
+        "title": "八尾徳洲会総合病院「やお徳サロン」",
+        "link": "https://www.yao.tokushukai.or.jp/oncology/salon.php"
+      },
+      {
+        "title": "市立豊中病院「患者サロン」",
+        "link": "https://www.city.toyonaka.osaka.jp/hp/outpatient/section/soudan/kanjasalon.html"
+      },
+      {
+        "title": "市立池田病院「ひまわりサロン」",
+        "link": "https://www.hosp.ikeda.osaka.jp/outpatient/center/ctc/"
+      },
+      {
+        "title": "大阪市立総合医療センター「がんサロン」",
+        "link": "https://www.osakacity-hp.or.jp/ocgh/about/cancer/kyoten/supportclub.html"
+      },
+      {
+        "title": "近畿大学病院「患者サロン なごみ」",
+        "link": "https://www.med.kindai.ac.jp/cgi-bin/gancenter/info/list.cgi?cid=18"
+      },
+      {
+        "title": "一般社団法人 がん哲学外来",
+        "link": "https://gantetsugaku.org/concept/"
+      },
+      {
+        "title": "大阪QOLの会",
+        "link": "https://qol-net.com/"
+      },
+      {
+        "title": "NPO つながりひろば",
+        "link": "https://tsunagari.osaka.jp/"
+      },
+      {
+        "title": "CANCER SUPPORT COMMUNITY JAPAN",
+        "link": "https://csc-japan.org/"
+      },
+      {
+        "title": "大阪府がん患者サポートセンター",
+        "link": "https://gan-support-osaka.jp/"
+      },
+      {
+        "title": "Peer Ring 一般社団法人ピアリング",
+        "link": "https://site.peer-ring.com/"
       }
     ]
   },
@@ -15,21 +75,116 @@
     "id": "move",
     "category": "動く",
     "image": "images/move.webp",
-    "desc": "体力に合わせて体を動かせる教室やリハビリの情報です。",
-    "items": []
+    "desc": "治療や病の知識がある専門家のもとで体を動かしたい",
+    "items": [
+      {
+        "title": "ルネサンス運動支援センター",
+        "link": "https://cancer.s-re.jp/"
+      },
+      {
+        "title": "動こう★キャンサー",
+        "link": "https://ugo-can.com/"
+      },
+      {
+        "title": "一般社団法人 BCY Institute Japan",
+        "link": "https://breastcancer-yoga.org/"
+      },
+      {
+        "title": "リオールジム オンラインフィットネス",
+        "link": "https://mammaria.jp/medical_fitness/feeling-uncomfortable/"
+      },
+      {
+        "title": "つながりひろば「ウォーキング教室2026」",
+        "link": "https://tsunagari.osaka.jp/2026/08/12/%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%E6%95%99%E5%AE%A42026%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/"
+      },
+      {
+        "title": "市立東大阪医療センター「気功講座」",
+        "link": "https://www.higashiosaka-mc.jp/data/media/higashiosaka_mc/page/outpatient/consultation/cancer/pdf/event202604_03.pdf"
+      }
+    ]
   },
   {
     "id": "learn",
     "category": "学ぶ",
     "image": "images/learn.webp",
-    "desc": "病気や治療について基礎から学べる資料や講座です。",
-    "items": []
+    "desc": "病気のことを正しく知りたい　体験を知識として残したい",
+    "items": [
+      {
+        "title": "大阪府がん患者サポートセンター「大阪府がんピア・サポーター養成研修」",
+        "link": "https://gan-support-osaka.jp/"
+      },
+      {
+        "title": "認定NPO法人 乳房健康研究会「ピンクリボンアドバイザー認定試験」",
+        "link": "https://breastcare.jp/"
+      },
+      {
+        "title": "Over Cancer Together「がんサバイバースピーキングセミナー」",
+        "link": "https://www.octjapan.jp/"
+      },
+      {
+        "title": "国立がん研究センターがん情報サービス",
+        "link": "https://ganjoho.jp/public/index.html"
+      },
+      {
+        "title": "Peer Ring 一般社団法人ピアリング「患者コミュニティリーダー養成講座」",
+        "link": "https://site.peer-ring.com/"
+      }
+    ]
   },
   {
-    "id": "know",
+    "id": "dress",
     "category": "装う",
     "image": "images/know.webp",
-    "desc": "髪や肌など、見た目の変化のケアについて相談できます。",
-    "items": []
+    "desc": "アピアランスケアについて知りたい",
+    "items": [
+      {
+        "title": "ART + 3C アトリプシー",
+        "link": "https://www.art3c.jp/?srsltid=AfmBOoofKeqPikR5MXLOFUe50CSrML84wM1pD4dHOOqIenn2hngCBan3"
+      },
+      {
+        "title": "BAREN バレン",
+        "link": "https://baren.tokyo/?srsltid=AfmBOoqVxQcnlXKb_lCqsBBheeV1l0xaXdfL4OcXU0bGDfP3BuF3kByG"
+      },
+      {
+        "title": "LINEASTORIA リネアストリア",
+        "link": "https://ilovewig.jp/"
+      },
+      {
+        "title": "edu style",
+        "link": "https://www.wig-ladys.com/lp/m_osaka_260904/?utm_source=google&utm_medium=cpc&utm_campaign=osaka&gad_source=1&gad_campaignid=21303790759&gbraid=0AAAAA9j3dXRr_niyDPep23U1nzp2ok6Ny&gclid=Cj0KCQjw--7UBhCpARIsAGJBpthO_jd254mLjl82B3g8mxfpi6dvR3tCSr5ZahV2RuWx1ndwzyv13ncaAuYVEALw_wcB"
+      },
+      {
+        "title": "SVENSON スヴェンソン",
+        "link": "https://ladys.svenson.co.jp/lp/allservice/?utm_source=google&utm_medium=cpc&utm_campaign=general_iry&utm_content=23806737772_201721707051_822024359885_kwd-3959023299&gad_source=1&gad_campaignid=23806737772&gbraid=0AAAAAo7JDZgtkzHB4KBIo5gLbXwiYvlOj&gclid=Cj0KCQjw--7UBhCpARIsAGJBptgn0ajIF4ByJDZdVrTjLVdbXB9X2W_ixTdGAgaCgqmKuX7v05mDcSwaAs2hEALw_wcB"
+      },
+      {
+        "title": "BEAUTY FIT",
+        "link": "https://sunnydayswig.com/?utm_source=google&utm_medium=cpc&utm_campaign=intentmatch&utm_term=%E5%8C%BB%E7%99%82%E3%82%A6%E3%82%A3%E3%83%83%E3%82%B0&utm_content=176298472214&gad_source=1&gad_campaignid=21045563755&gbraid=0AAAAADe3GQZCPdyq-0_sKQKxVDt0CoD05&gclid=Cj0KCQjw--7UBhCpARIsAGJBptiBktErbjMEkao8fEH7_7v2C_d8mRVbtI181I2jcDlGma4FBLhanzQaAjb-EALw_wcB"
+      },
+      {
+        "title": "BRIGHT LELE ブライトララ",
+        "link": "https://www.brightlele.jp/collections/medical?srsltid=AfmBOorxxjslER2EfmH84aXPterCFZw2rbSQ1Gs3AhfdYs44dpS2_nxe"
+      },
+      {
+        "title": "AQUA DOLL アクアドール",
+        "link": "https://aquadollwig.jp/medical?srsltid=AfmBOop3F1LS8X8jJGOHI87LXMVT9_QS2D3WX-YUa7yg_4wdu_Yt7rH5"
+      },
+      {
+        "title": "PRISILA プリシラ",
+        "link": "https://www.prisila.jp/c/medicalwig"
+      },
+      {
+        "title": "arbre hair design アルブルヘアデザイン",
+        "link": "https://www.arbrehairdesign.com/"
+      },
+      {
+        "title": "Ha-du",
+        "link": "https://ha-du.jp/shinsaibashi/?gad_source=1&gad_campaignid=22871972837&gbraid=0AAAAA_BI587i95r7RbOOwX7gC8HElH7jL&gclid=Cj0KCQjw--7UBhCpARIsAGJBpthLMHJtW5T1RidcxXdFROfzXNCAxw7JE-lhgg6GnQSIfsAf8pMFfWsaAphXEALw_wcB"
+      },
+      {
+        "title": "MASHU",
+        "link": "https://mashu.jp/special_content/app"
+      }
+    ]
   }
 ]

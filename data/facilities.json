@@ -1,7 +1,82 @@
 [
   {
-    "name": "市立東大阪医療センター",
-    "url": "https://www.higashiosaka-mc.jp/",
+    "name": "市立東大阪医療センターがん相談支援センター",
+    "url": "https://www.higashiosaka-mc.jp/outpatient/consultation/cancer.html",
     "map": "https://maps.app.goo.gl/xeouuuEA1yjT7Szw7"
+  },
+  {
+    "name": "八尾市立病院がん相談支援センター",
+    "url": "https://www.hospital.yao.osaka.jp/outpatient/cancer-consultation-support-center-outpatient/",
+    "map": ""
+  },
+  {
+    "name": "大阪国際がんセンターがん相談支援センター",
+    "url": "https://oici.jp/hospital/patient/gansoudan/gansoudan/",
+    "map": ""
+  },
+  {
+    "name": "市立豊中病院がん相談支援センター",
+    "url": "https://www.city.toyonaka.osaka.jp/hp/outpatient/section/soudan/index.html",
+    "map": ""
+  },
+  {
+    "name": "大阪大学医学部附属病院がん相談支援室",
+    "url": "https://www.hosp.med.osaka-u.ac.jp/inquiry/cancer.html",
+    "map": ""
+  },
+  {
+    "name": "大阪医療センターがん相談支援センター",
+    "url": "https://osaka.hosp.go.jp/department/comec/cancer/index.html",
+    "map": ""
+  },
+  {
+    "name": "市立池田病院がん相談支援センター",
+    "url": "https://www.hosp.ikeda.osaka.jp/outpatient/center/ctc/",
+    "map": ""
+  },
+  {
+    "name": "大阪市立総合医療センターがん相談支援センター",
+    "url": "https://www.osakacity-hp.or.jp/ocgh/about/24500.html",
+    "map": ""
+  },
+  {
+    "name": "近畿大学病院がん相談支援センター",
+    "url": "https://www.med.kindai.ac.jp/gancenter/consultation.html",
+    "map": ""
+  },
+  {
+    "name": "八尾徳洲会総合病院がん相談支援センター",
+    "url": "https://www.yao.tokushukai.or.jp/oncology/support.php",
+    "map": ""
+  },
+  {
+    "name": "市立柏原病院がん相談支援センター",
+    "url": "https://www.hospital-kashiwara-osaka.jp/sin-top/cancer-support/",
+    "map": ""
+  },
+  {
+    "name": "関西電力病院がん相談支援センター",
+    "url": "https://kanden-hsp.jp/introduction/feature/cancer/consultation.html",
+    "map": ""
+  },
+  {
+    "name": "大阪けいさつ病院がん相談支援センター",
+    "url": "https://oim.or.jp/cancer-center/support/consultation/#supportCenterTitle",
+    "map": ""
+  },
+  {
+    "name": "北野病院がん相談支援センター",
+    "url": "https://www.kitano-hp.or.jp/section/cancer_center/gankyoten",
+    "map": ""
+  },
+  {
+    "name": "大阪府済生会中津病院がん相談支援センター",
+    "url": "https://www.nakatsu.saiseikai.or.jp/branch/cancer/center/consultation/",
+    "map": ""
+  },
+  {
+    "name": "認定NPO法人 マギーズ東京",
+    "url": "https://maggiestokyo.org/",
+    "map": ""
   }
 ]
