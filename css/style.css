@@ -265,6 +265,13 @@ a.purpose-card h3 {
   font-size: 16px;
 }
 
+/* 「サイトへ」「関連イベント」は必ず一緒に並べる */
+.purpose-links {
+  display: inline-flex;
+  gap: 10px;
+  white-space: nowrap;
+}
+
 .purpose-items a {
   font-size: 14px;
   color: var(--color-main);
@@ -789,6 +796,11 @@ body.popup-open { overflow: hidden; }
   .purpose-card-body { gap: 12px; }
   .purpose-card-body img { width: 58px; height: 58px; }
   .purpose-desc { font-size: 14px; }
+
+  /* 施設名とリンクを必ず別の行にする */
+  .purpose-items li { display: block; }
+  .purpose-name { display: block; }
+  .purpose-links { display: flex; margin-top: 3px; }
 
   .cat-switch button { font-size: 14px; padding: 6px 13px; }
   .cat-head img { width: 68px; height: 68px; }

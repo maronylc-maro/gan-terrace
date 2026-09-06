@@ -71,8 +71,10 @@ function show(id) {
       ${cat.items.map(item => `
         <li>
           <span class="purpose-name">${item.title}</span>
-          <a href="${item.link}" target="_blank" rel="noopener">サイトへ</a>
-          <a href="calendar.html?related=${encodeURIComponent(item.title)}">関連イベント</a>
+          <span class="purpose-links">
+            <a href="${item.link}" target="_blank" rel="noopener">サイトへ</a>
+            <a href="calendar.html?related=${encodeURIComponent(item.title)}">関連イベント</a>
+          </span>
         </li>
       `).join('')}
     </ul>
