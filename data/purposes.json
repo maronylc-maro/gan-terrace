@@ -3,7 +3,7 @@
     "id": "talk",
     "category": "集う",
     "image": "images/talk.webp",
-    "desc": "話をしたい聴きたい　講座やワークショップに参加したい",
+    "desc": "話をする聴く　講座やワークショップに参加する",
     "items": [
       {
         "title": "市立東大阪医療センター「乳がん会さくら」",
@@ -75,7 +75,7 @@
     "id": "move",
     "category": "動く",
     "image": "images/move.webp",
-    "desc": "治療や病の知識がある専門家のもとで体を動かしたい",
+    "desc": "治療や病に理解・知識がある専門家のもと体を動かす",
     "items": [
       {
         "title": "ルネサンス運動支援センター",
@@ -107,7 +107,7 @@
     "id": "learn",
     "category": "学ぶ",
     "image": "images/learn.webp",
-    "desc": "病気のことを正しく知りたい　体験を知識として残したい",
+    "desc": "病を正しく知る　体験を知識として残す",
     "items": [
       {
         "title": "大阪府がん患者サポートセンター「大阪府がんピア・サポーター養成研修」",
@@ -135,7 +135,7 @@
     "id": "dress",
     "category": "装う",
     "image": "images/know.webp",
-    "desc": "アピアランスケアについて知りたい",
+    "desc": "アピアランスケア",
     "items": [
       {
         "title": "ART + 3C アトリプシー",
