@@ -797,10 +797,15 @@ body.popup-open { overflow: hidden; }
   .purpose-card-body img { width: 58px; height: 58px; }
   .purpose-desc { font-size: 14px; }
 
-  /* 施設名とリンクを必ず別の行にする */
-  .purpose-items li { display: block; }
-  .purpose-name { display: block; }
-  .purpose-links { display: flex; margin-top: 3px; }
+  /* 施設名は左、リンクは右に寄せる。名前が長ければリンクが次の行に落ちる */
+  .purpose-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 2px 10px;
+  }
+  .purpose-links { margin-left: auto; }
 
   .cat-switch button { font-size: 14px; padding: 6px 13px; }
   .cat-head img { width: 68px; height: 68px; }
