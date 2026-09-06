@@ -1,7 +1,12 @@
 // データ読み込み共通処理
+//
+// スプレッドシートを反映してもブラウザが古い内容を表示し続けないよう、
+// URLの末尾に1分ごとに変わる値を付けて、必ず最新を取りに行かせる。
 async function loadJSON(path) {
   try {
-    const res = await fetch(path);
+    const version = Math.floor(Date.now() / 60000);
+    const url = path + (path.includes('?') ? '&' : '?') + 'v=' + version;
+    const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) throw new Error('読み込み失敗: ' + path);
     return await res.json();
   } catch (e) {
