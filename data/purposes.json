@@ -3,7 +3,7 @@
     "id": "talk",
     "category": "集う",
     "image": "images/talk.webp",
-    "desc": "話をする聴く　講座やワークショップに参加する",
+    "desc": "個別で、集まって話をする聴く\n講座やワークショップに参加する",
     "items": [
       {
         "title": "市立東大阪医療センター「乳がん会さくら」",
@@ -107,7 +107,7 @@
     "id": "learn",
     "category": "学ぶ",
     "image": "images/learn.webp",
-    "desc": "病を正しく知る　体験を知識として残す",
+    "desc": "病を正しく知る\n体験を知識として残す",
     "items": [
       {
         "title": "大阪府がん患者サポートセンター「大阪府がんピア・サポーター養成研修」",
@@ -135,7 +135,7 @@
     "id": "dress",
     "category": "装う",
     "image": "images/know.webp",
-    "desc": "アピアランスケア",
+    "desc": "アピアランスケア\nスカーフ・ウィッグ・医療美容師を見つける",
     "items": [
       {
         "title": "ART + 3C アトリプシー",
