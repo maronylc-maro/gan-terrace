@@ -3,8 +3,36 @@
     "id": "talk",
     "category": "集う",
     "image": "images/talk.webp",
-    "desc": "個別で、集まって話をする聴く\n講座やワークショップに参加する",
+    "desc": "個別で、集まって、誰かと話をする聴く\n講座やワークショップ・イベントに参加する",
     "items": [
+      {
+        "title": "大阪府がん患者サポートセンター",
+        "link": "https://gan-support-osaka.jp/"
+      },
+      {
+        "title": "NPO つながりひろば",
+        "link": "https://tsunagari.osaka.jp/"
+      },
+      {
+        "title": "CANCER SUPPORT COMMUNITY JAPAN",
+        "link": "https://csc-japan.org/"
+      },
+      {
+        "title": "Peer Ring 一般社団法人ピアリング",
+        "link": "https://site.peer-ring.com/"
+      },
+      {
+        "title": "大阪QOLの会",
+        "link": "https://qol-net.com/"
+      },
+      {
+        "title": "Reborn.R",
+        "link": ""
+      },
+      {
+        "title": "一般社団法人 がん哲学外来",
+        "link": "https://gantetsugaku.org/concept/"
+      },
       {
         "title": "市立東大阪医療センター「乳がん会さくら」",
         "link": "https://www.higashiosaka-mc.jp/data/media/higashiosaka_mc/page/outpatient/consultation/cancer/pdf/event202604_02.pdf"
@@ -18,16 +46,16 @@
         "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024"
       },
       {
+        "title": "八尾徳洲会総合病院「やお徳サロン」",
+        "link": "https://www.yao.tokushukai.or.jp/oncology/salon.php"
+      },
+      {
         "title": "大阪国際がんセンター「1・3・5の会」",
         "link": "https://cancergroup135.jimdofree.com/"
       },
       {
         "title": "大阪医療センター「女性がん患者の会 ハーブ」",
         "link": "https://osaka.hosp.go.jp/volunteer/activity/index.html"
-      },
-      {
-        "title": "八尾徳洲会総合病院「やお徳サロン」",
-        "link": "https://www.yao.tokushukai.or.jp/oncology/salon.php"
       },
       {
         "title": "市立豊中病院「患者サロン」",
@@ -44,30 +72,6 @@
       {
         "title": "近畿大学病院「患者サロン なごみ」",
         "link": "https://www.med.kindai.ac.jp/cgi-bin/gancenter/info/list.cgi?cid=18"
-      },
-      {
-        "title": "一般社団法人 がん哲学外来",
-        "link": "https://gantetsugaku.org/concept/"
-      },
-      {
-        "title": "大阪QOLの会",
-        "link": "https://qol-net.com/"
-      },
-      {
-        "title": "NPO つながりひろば",
-        "link": "https://tsunagari.osaka.jp/"
-      },
-      {
-        "title": "CANCER SUPPORT COMMUNITY JAPAN",
-        "link": "https://csc-japan.org/"
-      },
-      {
-        "title": "大阪府がん患者サポートセンター",
-        "link": "https://gan-support-osaka.jp/"
-      },
-      {
-        "title": "Peer Ring 一般社団法人ピアリング",
-        "link": "https://site.peer-ring.com/"
       }
     ]
   },
@@ -75,7 +79,7 @@
     "id": "move",
     "category": "動く",
     "image": "images/move.webp",
-    "desc": "治療や病に理解・知識がある専門家のもと体を動かす",
+    "desc": "治療や病に理解・知識がある専門家のもと\n体を動かす",
     "items": [
       {
         "title": "ルネサンス運動支援センター",
@@ -135,7 +139,7 @@
     "id": "dress",
     "category": "装う",
     "image": "images/know.webp",
-    "desc": "アピアランスケア\nスカーフ・ウィッグ・医療美容師を見つける",
+    "desc": "アピアランスケア\n髪・肌・爪 外見の変化に伴う装いを探す",
     "items": [
       {
         "title": "ART + 3C アトリプシー",
@@ -150,40 +154,48 @@
         "link": "https://ilovewig.jp/"
       },
       {
-        "title": "edu style",
-        "link": "https://www.wig-ladys.com/lp/m_osaka_260904/"
-      },
-      {
-        "title": "SVENSON スヴェンソン",
-        "link": "https://ladys.svenson.co.jp/lp/allservice/"
-      },
-      {
-        "title": "BEAUTY FIT",
-        "link": "https://sunnydayswig.com/"
+        "title": "AQUA DOLL アクアドール",
+        "link": "https://aquadollwig.jp/medical"
       },
       {
         "title": "BRIGHT LELE ブライトララ",
         "link": "https://www.brightlele.jp/collections/medical"
       },
       {
-        "title": "AQUA DOLL アクアドール",
-        "link": "https://aquadollwig.jp/medical"
-      },
-      {
         "title": "PRISILA プリシラ",
         "link": "https://www.prisila.jp/c/medicalwig"
+      },
+      {
+        "title": "SVENSON スヴェンソン",
+        "link": "https://ladys.svenson.co.jp/lp/allservice/"
       },
       {
         "title": "arbre hair design アルブルヘアデザイン",
         "link": "https://www.arbrehairdesign.com/"
       },
       {
+        "title": "MASHU",
+        "link": "https://mashu.jp/special_content/app"
+      },
+      {
+        "title": "BEAUTY FIT",
+        "link": "https://sunnydayswig.com/"
+      },
+      {
+        "title": "edu style",
+        "link": "https://www.wig-ladys.com/lp/m_osaka_260904/"
+      },
+      {
         "title": "Ha-du",
         "link": "https://ha-du.jp/shinsaibashi/"
       },
       {
-        "title": "MASHU",
-        "link": "https://mashu.jp/special_content/app"
+        "title": "乙女温泉",
+        "link": "https://www.instagram.com/otome_onsen?stkn=YnVxdnZrNWY3ZDds"
+      },
+      {
+        "title": "おとめぐり",
+        "link": "https://www.instagram.com/otomeguri.deai?stkn=d2hua2JzY3U0OHZ3"
       }
     ]
   }
