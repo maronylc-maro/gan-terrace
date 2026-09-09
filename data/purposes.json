@@ -58,6 +58,10 @@
         "link": "https://osaka.hosp.go.jp/volunteer/activity/index.html"
       },
       {
+        "title": "市立柏原病院「かしわらサロン」",
+        "link": "https://www.hospital-kashiwara-osaka.jp/sin-kanwa/"
+      },
+      {
         "title": "市立豊中病院「患者サロン」",
         "link": "https://www.city.toyonaka.osaka.jp/hp/outpatient/section/soudan/kanjasalon.html"
       },
@@ -114,20 +118,24 @@
     "desc": "病を正しく知る\n体験を知識として残す",
     "items": [
       {
-        "title": "大阪府がん患者サポートセンター「大阪府がんピア・サポーター養成研修」",
+        "title": "国立がん研究センターがん情報サービス",
+        "link": "https://ganjoho.jp/public/index.html"
+      },
+      {
+        "title": "認定NPO法人キャンサーネットジャパン",
+        "link": "https://www.cancernet.jp/"
+      },
+      {
+        "title": "大阪府がん患者サポートセンター\n「大阪府がんピア・サポーター養成研修」",
         "link": "https://gan-support-osaka.jp/"
       },
       {
-        "title": "認定NPO法人 乳房健康研究会「ピンクリボンアドバイザー認定試験」",
+        "title": "認定NPO法人 乳房健康研究会\n「ピンクリボンアドバイザー認定試験」",
         "link": "https://breastcare.jp/"
       },
       {
         "title": "Over Cancer Together「がんサバイバースピーキングセミナー」",
         "link": "https://www.octjapan.jp/"
-      },
-      {
-        "title": "国立がん研究センターがん情報サービス",
-        "link": "https://ganjoho.jp/public/index.html"
       },
       {
         "title": "Peer Ring 一般社団法人ピアリング「患者コミュニティリーダー養成講座」",
