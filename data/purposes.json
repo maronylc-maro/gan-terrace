@@ -10,12 +10,12 @@
         "link": "https://gan-support-osaka.jp/"
       },
       {
-        "title": "NPO つながりひろば",
+        "title": "NPO法人つながりひろば",
         "link": "https://tsunagari.osaka.jp/"
       },
       {
-        "title": "CANCER SUPPORT COMMUNITY JAPAN",
-        "link": "https://csc-japan.org/"
+        "title": "認定NPO法人がんサポートコミュニティー",
+        "link": "https://csc-japan.org/participation/"
       },
       {
         "title": "Peer Ring 一般社団法人ピアリング",
@@ -52,6 +52,10 @@
       {
         "title": "大阪国際がんセンター「1・3・5の会」",
         "link": "https://cancergroup135.jimdofree.com/"
+      },
+      {
+        "title": "医誠会国際総合病院「がん患者会さくらサロン」",
+        "link": "https://www.iseikaihp.or.jp/visit/cancer_support/index.html#op_03"
       },
       {
         "title": "大阪医療センター「女性がん患者の会 ハーブ」",
@@ -155,7 +159,7 @@
     "id": "dress",
     "category": "装う",
     "image": "images/know.webp",
-    "desc": "アピアランスケア\n髪・肌・爪 外見の変化に伴う装いを探す",
+    "desc": "アピアランスケア\n髪・肌・爪 外見の変化に沿った装いを探す",
     "items": [
       {
         "title": "ART + 3C アトリプシー",
