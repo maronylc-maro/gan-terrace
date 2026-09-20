@@ -55,6 +55,24 @@ function renderSwitch(activeId) {
   });
 }
 
+// カテゴリごとに title・description・canonical を切り替える
+function updateMeta(cat) {
+  const url = 'https://maronylc-maro.github.io/gan-terrace/purpose.html?cat=' + encodeURIComponent(cat.id);
+  const title = `${cat.category}｜目的別情報｜がんテラス`;
+  const lead = (cat.desc || '').split('\n').map(s => s.trim()).filter(Boolean).join('、').replace(/。$/, '');
+  const description = `関西のがん患者さんとご家族向け「${cat.category}」の情報。${lead ? lead + '。' : ''}${cat.items.length}件を掲載しています。`;
+
+  const setMeta = (selector, attr, value) => {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute(attr, value);
+  };
+  document.title = title;
+  setMeta('meta[name="description"]', 'content', description);
+  setMeta('meta[property="og:title"]', 'content', title);
+  setMeta('meta[property="og:description"]', 'content', description);
+  setMeta('link[rel="canonical"]', 'href', url);
+}
+
 function show(id) {
   const cat = PURPOSES.find(c => c.id === id) || PURPOSES[0];
   renderSwitch(cat.id);
@@ -81,6 +99,7 @@ function show(id) {
   `;
 
   history.replaceState(null, '', 'purpose.html?cat=' + encodeURIComponent(cat.id));
+  updateMeta(cat);
 }
 
 async function init() {

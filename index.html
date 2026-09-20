@@ -19,7 +19,7 @@
 <header class="site-header">
   <div class="site-header-inner">
     <div class="site-brand">
-      <a class="site-logo" href="index.html">がんテラス</a>
+      <h1 class="site-title"><a class="site-logo" href="index.html">がんテラス</a></h1>
       <p class="site-tagline">関西のがん患者さんとご家族の「見つける」ポータルサイト</p>
     </div>
 
@@ -33,6 +33,8 @@
 </header>
 
 <main class="container top-main">
+
+  <p class="top-intro">大阪・兵庫・奈良の、がん患者会・がんサロン・アピアランスケア・相談窓口を探せます。</p>
 
   <section class="block anchor-target" id="purpose">
     <div class="block-head">
@@ -73,7 +75,7 @@ async function renderPurposes() {
     <a class="purpose-card" href="purpose.html?cat=${encodeURIComponent(cat.id)}">
       <h3>${cat.category}</h3>
       <div class="purpose-card-body">
-        <img src="${cat.image}" alt="" loading="lazy">
+        <img src="${cat.image}" alt="${cat.category}" loading="lazy">
         <p class="purpose-desc">${cat.desc || ''}</p>
       </div>
     </a>
