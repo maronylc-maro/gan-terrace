@@ -29,7 +29,7 @@
     "place": "八尾市立病院1階待合ロビー",
     "summary": "読売日本交響楽団の皆さんによる弦楽四重奏クラシックや親しみのある名曲で患者や家族の心を癒します",
     "link": "https://www.hospital.yao.osaka.jp/yaowp/wp-content/uploads/2026/08/20260903_concert.pdf",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2026-09-03",
@@ -37,7 +37,7 @@
     "place": "八尾市立病院北館301",
     "summary": "コンサートの前に皆でおしゃべり会",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2026-11-27",
@@ -45,7 +45,7 @@
     "place": "八尾市立病院北館301",
     "summary": "ウィッグ",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2026-12-18",
@@ -53,7 +53,7 @@
     "place": "八尾市立病院北館301",
     "summary": "スキンケア",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2027-01-22",
@@ -61,7 +61,7 @@
     "place": "八尾市立病院北館301",
     "summary": "やさしく学ぶ抗がん剤の話",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2027-02-26",
@@ -69,7 +69,7 @@
     "place": "八尾市立病院北館301",
     "summary": "こころのケア",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2027-03-26",
@@ -77,7 +77,7 @@
     "place": "八尾市立病院北館301",
     "summary": "ヨガ",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1826024#pageContent",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2026-09-03",
@@ -213,7 +213,7 @@
     "place": "大阪市立北区民センター第3会議室",
     "summary": "乳ガン再発転移者に参加者を限定した語らいの場🌈✨",
     "link": "https://nijinokai2021.amebaownd.com/",
-    "related": "乳がん再発患者会虹の会(大阪)"
+    "related": "乳がん再発患者会虹の会(大阪)「ゆんたく」"
   },
   {
     "date": "2026-09-14",
@@ -245,7 +245,15 @@
     "place": "日本生命病院1階あったかふれあいホール",
     "summary": "ヨガでほっこり！",
     "link": "https://www.nissay-hp.or.jp/event/20260916_attaka_saron.html",
-    "related": "日本生命病院がん相談支援センター"
+    "related": "日本生命病院「がんサロン」"
+  },
+  {
+    "date": "2026-10-21",
+    "title": "日生あったか茶論",
+    "place": "日本生命病院1階あったかふれあいホール",
+    "summary": "栄養と食事",
+    "link": "https://www.nissay-hp.or.jp/event/20261021_attaka_saron.html",
+    "related": "日本生命病院「がんサロン」"
   },
   {
     "date": "2026-09-20",
@@ -461,7 +469,7 @@
     "place": "大阪医療センター1階ロビー",
     "summary": "おしゃべりや体験講座でホッとできる時間を",
     "link": "https://osaka.hosp.go.jp/cancer/event/index.html",
-    "related": "大阪医療センター「リボンズハウス」"
+    "related": ""
   },
   {
     "date": "2026-09-25",
@@ -637,7 +645,7 @@
     "place": "八尾市立病院北館501",
     "summary": "やさしい太極拳・お金にまつわるACP・交流会",
     "link": "https://2hqeycacow7tr8bolgpp.stores.jp/reserve/yaohp/1044336#pageContent",
-    "related": "八尾市立病院「きらきら若ごぼうの会」"
+    "related": "八尾市立病院患者サロン「きらきら若ごぼうの会」"
   },
   {
     "date": "2026-11-28",
@@ -653,7 +661,7 @@
     "place": "八尾市立病院北館5階会議室",
     "summary": "食道がん・胃がんを正しく知る 知っておきたい大腸がんの話",
     "link": "https://www.hospital.yao.osaka.jp/yaowp/wp-content/uploads/2026/08/20260912.pdf",
-    "related": "八尾市立病院"
+    "related": ""
   },
   {
     "date": "2026-09-24",
@@ -728,6 +736,14 @@
     "related": ""
   },
   {
+    "date": "2026-12-03",
+    "title": "住友病院市民公開セミナー",
+    "place": "住友病院14階講堂およびWEB配信",
+    "summary": "講演「もっと知ろう！乳がんについて」",
+    "link": "https://www.sumitomo-hp.or.jp/about/seminar/#seminar-detail_2026_12_03",
+    "related": ""
+  },
+  {
     "date": "2026-10-28",
     "title": "YORU☆CARE",
     "place": "豊中市魅力文化施設",
@@ -741,7 +757,7 @@
     "place": "リーガロイヤルホテル2階 桐の間",
     "summary": "講演・トークショー・トークセッション",
     "link": "https://prtimes.jp/main/html/rd/p/000000004.000190854.html",
-    "related": "特定非営利活動法人ピンクリボン大阪"
+    "related": ""
   },
   {
     "date": "2026-10-12",
@@ -757,7 +773,7 @@
     "place": "ふらっとスペース",
     "summary": "自分でできる、リンパの流れに優しい簡単セルフケア",
     "link": "https://www.instagram.com/p/Dc2AQSQBIs1/?stkn=ZXBtMnFkeDBxcTRk",
-    "related": "ヨガ教室ナチュラル・シャンティ"
+    "related": ""
   },
   {
     "date": "2026-10-23",
@@ -765,7 +781,7 @@
     "place": "ふらっとスペース",
     "summary": "乳がん術後の浮腫みとセルフケア",
     "link": "https://www.instagram.com/p/Dc2AQSQBIs1/?stkn=ZXBtMnFkeDBxcTRk",
-    "related": "ヨガ教室ナチュラル・シャンティ"
+    "related": ""
   },
   {
     "date": "2026-11-03",
@@ -797,7 +813,7 @@
     "place": "医療複合施設 i-Mall",
     "summary": "阿波踊り＆体験・カフェ＆餅つき・講演・計測体験",
     "link": "https://www.mirai-process.org/forum.html",
-    "related": "医誠会国際総合病院"
+    "related": ""
   },
   {
     "date": "2026-11-08",
@@ -877,7 +893,7 @@
     "place": "〘東京・阿佐ヶ谷〙1つだけ美術館",
     "summary": "展覧会・インクアート体験会・トークショー",
     "link": "https://www.art3c.jp/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAUdcdVwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp-b5ffXr__RkPomdKNpC2303fPHi0gCDsq3HDvgI3YP8BfAMlBZFVOX8PZOY_aem_Mf7UisxJwHb8hUmvcuUAoQ",
-    "related": "ART + 3C アトリプシー"
+    "related": ""
   },
   {
     "date": "2026-11-03",
