@@ -1042,7 +1042,7 @@
   {
     "date": "2026-10-23",
     "title": "〘京都〙アトリプシー ART SCARF Collection Ⅲ",
-    "place": "PAO Makers Gallery",
+    "place": "〘京都〙PAO Makers Gallery",
     "summary": "展覧会 榎原理絵(ジャスミン)さん在廊・インクアート体験会",
     "link": "https://www.art3c.jp/info",
     "related": "ART + 3C アトリプシー"
@@ -1050,7 +1050,7 @@
   {
     "date": "2026-10-24",
     "title": "〘京都〙アトリプシー ART SCARF Collection Ⅲ",
-    "place": "PAO Makers Gallery",
+    "place": "〘京都〙PAO Makers Gallery",
     "summary": "展覧会 榎原理絵(ジャスミン)さん、ダニエル・レオンさん在廊 トークショー・インクアート体験会",
     "link": "https://www.art3c.jp/info",
     "related": "ART + 3C アトリプシー"
@@ -1058,7 +1058,7 @@
   {
     "date": "2026-10-25",
     "title": "〘京都〙アトリプシー ART SCARF Collection Ⅲ",
-    "place": "PAO Makers Gallery",
+    "place": "〘京都〙PAO Makers Gallery",
     "summary": "展覧会 榎原理絵(ジャスミン)さん在廊・インクアート体験会",
     "link": "https://www.art3c.jp/info",
     "related": "ART + 3C アトリプシー"
@@ -1110,5 +1110,29 @@
     "summary": "〘2日目〙リレーウォーク・ショーやライブ・交流会など",
     "link": "https://relayforlife.jp/osaka-asahi/2026program",
     "related": ""
+  },
+  {
+    "date": "2026-11-13",
+    "title": "〘大阪〙アトリプシー ART SCARF Collection Ⅲ",
+    "place": "〘八尾市〙地域共生空間「つながり」",
+    "summary": "展覧会 榎原理絵(ジャスミン)さん、三松えりかさん在廊・インクアート体験会",
+    "link": "https://www.art3c.jp/info",
+    "related": "ART + 3C アトリプシー"
+  },
+  {
+    "date": "2026-11-14",
+    "title": "〘大阪〙アトリプシー ART SCARF Collection Ⅲ",
+    "place": "〘八尾市〙地域共生空間「つながり」",
+    "summary": "展覧会 榎原理絵(ジャスミン)さん、三松えりかさん在廊・インクアート体験会",
+    "link": "https://www.art3c.jp/info",
+    "related": "ART + 3C アトリプシー"
+  },
+  {
+    "date": "2026-11-15",
+    "title": "〘大阪〙アトリプシー ART SCARF Collection Ⅲ",
+    "place": "〘中之島〙会場地詳細はご予約された方へお伝えされます",
+    "summary": "展覧会 榎原理絵(ジャスミン)さん、三松えりかさん在廊・インクアート体験会",
+    "link": "https://www.art3c.jp/info",
+    "related": "ART + 3C アトリプシー"
   }
 ]
