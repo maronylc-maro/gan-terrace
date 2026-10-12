@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gan-terrace.link/sitemap.xml

@@ -11,7 +11,7 @@
 <meta property="og:title" content="目的別情報｜がんテラス">
 <meta property="og:description" content="「集う・動く・学ぶ・装う」の目的別に、関西のがん患者さんとご家族が利用できる患者会・病院・支援団体の情報をまとめています。気になる団体の関連イベントもカレンダーで確認できます。">
 <meta name="twitter:card" content="summary">
-<link rel="canonical" href="https://maronylc-maro.github.io/gan-terrace/purpose.html">
+<link rel="canonical" href="https://gan-terrace.link/purpose.html">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -57,7 +57,7 @@ function renderSwitch(activeId) {
 
 // カテゴリごとに title・description・canonical を切り替える
 function updateMeta(cat) {
-  const url = 'https://maronylc-maro.github.io/gan-terrace/purpose.html?cat=' + encodeURIComponent(cat.id);
+  const url = 'https://gan-terrace.link/purpose.html?cat=' + encodeURIComponent(cat.id);
   const title = `${cat.category}｜目的別情報｜がんテラス`;
   const lead = (cat.desc || '').split('\n').map(s => s.trim()).filter(Boolean).join('、').replace(/。$/, '');
   const description = `関西のがん患者さんとご家族向け「${cat.category}」の情報。${lead ? lead + '。' : ''}${cat.items.length}件を掲載しています。`;
