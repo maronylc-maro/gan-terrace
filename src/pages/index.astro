@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import { events, news, purposes, formatDate, todayJst } from '../lib/data';
+import { purposeCat } from '../lib/urls';
+
+const TITLE = 'がんテラス｜関西のがん患者さんとご家族の「見つける」ポータルサイト';
+const DESCRIPTION =
+  '関西のがん患者さんとご家族が「集う・動く・学ぶ・装う」場を見つけるためのポータルサイト。地域の患者会や病院の取り組み、イベント情報、施設・団体のリンク集をまとめています。';
+
+// 開催日が過ぎたイベントは新着から外す（当日は残す）
+const today = todayJst();
+const upcoming = events.filter((e) => e.date >= today);
+
+// スプレッドシートの下の行が新しいので、逆順にして「登録が新しい順」にする
+const eventNews = [...upcoming].reverse().slice(0, 20);
+
+// お知らせは日付の新しい順
+const otherNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 20);
+---
+
+<Base title={TITLE} description={DESCRIPTION} path="/" home>
+  <main class="container top-main">
+    <p class="top-intro">
+      大阪・兵庫・奈良の、がん患者会・がんサロン・アピアランスケア・相談窓口を探せます。
+    </p>
+
+    <section class="block anchor-target" id="purpose">
+      <div class="block-head">
+        <h2>目的別情報</h2>
+      </div>
+      <div class="purpose-grid" id="purpose-grid">
+        {
+          purposes.map((cat) => (
+            <a class="purpose-card" href={purposeCat(cat.id)}>
+              <h3>{cat.category}</h3>
+              <div class="purpose-card-body">
+                <img src={cat.image} alt={cat.category} loading="lazy" />
+                <p class="purpose-desc">{cat.desc}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="block anchor-target" id="news">
+      <div class="block-head">
+        <h2>新着一覧</h2>
+      </div>
+      <div class="news-columns">
+        <div class="news-col">
+          <h3>イベント新着</h3>
+          <ul class="news-list" id="event-news-list">
+            {
+              eventNews.map((item) => (
+                <li data-date={item.date}>
+                  <span class="news-date">{formatDate(item.date)}</span>
+                  {item.link ? (
+                    <a href={item.link} target="_blank" rel="noopener">
+                      {item.title}
+                    </a>
+                  ) : (
+                    <span class="news-title">{item.title}</span>
+                  )}
+                </li>
+              ))
+            }
+            <li
+              class="empty-note"
+              id="event-news-empty"
+              style={eventNews.length ? 'display:none' : undefined}
+            >
+              現在イベントの新着はありません
+            </li>
+          </ul>
+        </div>
+        <div class="news-col">
+          <h3>お知らせ新着</h3>
+          <ul class="news-list" id="other-news-list">
+            {
+              otherNews.length ? (
+                otherNews.map((item) => (
+                  <li>
+                    <span class="news-date">{formatDate(item.date)}</span>
+                    {item.link ? (
+                      <a href={item.link} target="_blank" rel="noopener">
+                        {item.title}
+                      </a>
+                    ) : (
+                      <span class="news-title">{item.title}</span>
+                    )}
+                  </li>
+                ))
+              ) : (
+                <li class="empty-note">現在お知らせの新着はありません</li>
+              )
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Fragment slot="scripts">
+  <script is:inline>
+    // 次のビルドまでの間に日付が変わっても、終わったイベントが見えないようにする。
+    // （ビルド時にも同じ判定をしているが、ブラウザ側でも開催日が過ぎた行を隠す）
+    (function () {
+      var d = new Date();
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      var today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+
+      var items = document.querySelectorAll('#event-news-list li[data-date]');
+      var visible = 0;
+      items.forEach(function (li) {
+        if (li.getAttribute('data-date') < today) {
+          li.style.display = 'none';
+        } else {
+          visible++;
+        }
+      });
+
+      var empty = document.getElementById('event-news-empty');
+      if (empty) empty.style.display = visible ? 'none' : '';
+    })();
+  </script>
+  </Fragment>
+</Base>
