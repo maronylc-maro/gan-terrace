@@ -1,5 +1,8 @@
 # がんテラス セットアップ手順
 
+公開先は Cloudflare（Workers の静的アセット）。公開URLは https://gan-terrace.link/
+ソースコードは GitHub で管理し、`main` に push されると Cloudflare が自動で公開する。
+
 Google Cloud やサービスアカウントは使わない。スプレッドシートに紐づく Apps Script 1本で、
 サイトへのデータ配信と「気になる」の集計をまとめて行う。
 
@@ -7,10 +10,18 @@ Google Cloud やサービスアカウントは使わない。スプレッドシ�
 1. GitHubで新しいリポジトリを作成する
 2. このフォルダの中身をすべてリポジトリにアップロード（push）する
 
-## 2. GitHub Pagesを有効化
-1. リポジトリの `Settings` → `Pages`
-2. `Branch` を `main` / `/(root)` に設定して保存
-3. 発行されたURLがサイトのアドレスになる
+## 2. Cloudflare で公開する
+1. Cloudflare の `Workers & Pages` → `作成` → `Git リポジトリをインポート` で、GitHub のリポジトリを選ぶ
+   （GitHub 連携の承認は、リポジトリ所有者のアカウントで行う）
+2. プロジェクト名はリポジトリ直下の `wrangler.jsonc` の `name` と同じにする
+3. ビルドコマンドは空欄、デプロイコマンドは `npx wrangler deploy` のままデプロイする
+4. 公開後、`Workers & Pages` → 該当プロジェクト → `ドメイン` から独自ドメインを追加する
+5. 以後は `main` に push するたびに自動で公開される
+
+- 公開するフォルダは `wrangler.jsonc` の `assets.directory`（リポジトリのルート）で指定している
+- `.assetsignore` に書いたファイル（`README.md`、`scripts/`、`.github/` など）は公開されない。
+  公開したくないファイルを増やしたときは、ここに追記する
+- `robots.txt` は Cloudflare が自動で先頭にAIの利用条件の宣言文を付け足して配信する（AIクローラーの拒否設定は入っていない）
 
 ## 3. スプレッドシートの準備
 同梱の `がんテラス_データ入力シート.xlsx` をGoogleドライブにアップロードし、
@@ -67,7 +78,7 @@ Google Cloud やサービスアカウントは使わない。スプレッドシ�
 このURLは手順5と手順7の両方で使う。
 
 > **なぜ「全員」にするのか**
-> GitHub Pages のサイトからも読めるようにするため。公開されるのはスプレッドシートの中身ではなく、
+> 公開サイトのブラウザからも読めるようにするため。公開されるのはスプレッドシートの中身ではなく、
 > このスクリプトが返すイベント・お知らせ・施設リンク集・目的別情報のデータだけ（いずれもサイトに載せる情報）。
 > スプレッドシート本体は非公開のまま。
 
@@ -82,9 +93,12 @@ Google Cloud やサービスアカウントは使わない。スプレッドシ�
 1. リポジトリの `Actions` タブを開く
 2. 「スプレッドシートをサイトに反映」を選択
 3. `Run workflow` ボタンを押す
-4. 1分ほどで `data/` 以下のJSON（events / news / facilities / purposes）が更新され、サイトに反映される
+4. 1分ほどで `data/` 以下のJSON（events / news / facilities / purposes）が更新される。
+   そのコミットを受けて Cloudflare が自動で再公開し、数分でサイトに反映される
 
 スプレッドシートを編集しただけでは反映されない。編集のあとにこの手順を実行する。
+反映されないときは、Cloudflare の `Workers & Pages` → 該当プロジェクト → `デプロイ`（ビルド履歴）で、
+新しいビルドが走っているか、失敗していないかを確認する。
 
 ## 7. 気になるボタンを有効にする
 イベント詳細に表示される「👍 気になる」の件数は、手順4と同じApps Scriptに記録される。
@@ -103,8 +117,8 @@ URLが空のあいだはボタン自体が表示されないので、後から�
 - Apps Script のコードを直したときは、`デプロイ` → `デプロイを管理` → 鉛筆アイコン → バージョンを「新バージョン」にして再デプロイしないと反映されない
 
 ## お問い合わせフォーム
-各ページのフッターにある `https://forms.gle/your-google-form-id` を、実際のGoogleフォームURLに差し替える。
-`index.html` `purpose.html` `calendar.html` `facilities.html` の4ファイルにある。
+各ページのフッターにあるお問い合わせリンクは、`index.html` `purpose.html` `calendar.html` `facilities.html` の4ファイルにある。
+差し替える場合は4ファイルとも同じURLに揃える。
 
 ## 目的別情報の編集
 `purposes` と `purpose_items` の2シートに入力し、他のデータと同じくActionsで反映する。
@@ -134,3 +148,7 @@ URLが空のあいだはボタン自体が表示されないので、後から�
 | `scripts/sync_sheets.py` | Actions が実行する同期スクリプト（追加パッケージ不要） |
 | `.github/workflows/sync-data.yml` | Actions のワークフロー定義 |
 | `images/` | 目的別情報のイラスト |
+| `wrangler.jsonc` | Cloudflare に公開するフォルダの指定 |
+| `.assetsignore` | 公開しないファイルの指定 |
+| `robots.txt` | 検索・AIクローラー向けの案内（sitemap の場所を記載） |
+| `sitemap.xml` | 検索エンジン向けのページ一覧 |
