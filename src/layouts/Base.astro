@@ -1,0 +1,85 @@
+---
+// 全ページ共通の枠（ヘッダー・メニュー・フッター・メタ情報）
+import { canonical, paths } from '../lib/urls';
+
+interface Props {
+  title: string;
+  description: string;
+  /** このページのパス（canonical に使う）。例: '/purpose' */
+  path: string;
+  /** メニューで強調する項目 */
+  active?: 'top' | 'event' | 'news' | 'links';
+  /** トップページだけ、見出し(h1)とキャッチコピーを表示する */
+  home?: boolean;
+}
+
+const { title, description, path, active, home = false } = Astro.props;
+const url = canonical(path);
+
+const nav = [
+  { key: 'top', label: 'TOP', href: `${paths.home}#purpose` },
+  { key: 'event', label: 'イベント', href: paths.calendar },
+  { key: 'news', label: '新着一覧', href: `${paths.home}#news` },
+  { key: 'links', label: 'リンク集', href: paths.facilities },
+];
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="がんテラス" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href={url} />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        {
+          home ? (
+            <div class="site-brand">
+              <h1 class="site-title">
+                <a class="site-logo" href={paths.home}>がんテラス</a>
+              </h1>
+              <p class="site-tagline">関西のがん患者さんとご家族の「見つける」ポータルサイト</p>
+            </div>
+          ) : (
+            <a class="site-logo" href={paths.home}>がんテラス</a>
+          )
+        }
+
+        <nav class="global-nav">
+          {
+            nav.map((item) => (
+              <a href={item.href} class={item.key === active ? 'active' : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <a
+        class="contact-link"
+        href="https://forms.gle/tAPAv9wksziPmcej7"
+        target="_blank"
+        rel="noopener">お問い合わせ</a
+      >
+      <p class="footer-note">© がんテラス</p>
+    </footer>
+
+    <slot name="scripts" />
+  </body>
+</html>

@@ -18,7 +18,9 @@ function isHighlighted(event) {
 }
 
 async function initCalendar() {
-  ALL_EVENTS = await loadJSON('data/events.json');
+  // イベントのデータは、ページに埋め込まれたものを使う（ビルド時に書き出される）
+  const embedded = document.getElementById('events-data');
+  ALL_EVENTS = embedded ? JSON.parse(embedded.textContent) : [];
 
   const params = new URLSearchParams(window.location.search);
   HIGHLIGHT_KEY = params.get('related');
@@ -53,7 +55,7 @@ function renderFilterNote() {
     <div class="filter-note">
       <span class="swatch"></span>
       <span>「${HIGHLIGHT_KEY}」の関連イベント${hit}件を色付きで表示しています</span>
-      <a class="clear" href="calendar.html">解除して全体を見る</a>
+      <a class="clear" href="/calendar">解除して全体を見る</a>
     </div>`;
 }
 

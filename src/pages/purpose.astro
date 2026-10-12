@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import { purposes } from '../lib/data';
+import { calendarRelated, paths } from '../lib/urls';
+
+const TITLE = '目的別情報｜がんテラス';
+const DESCRIPTION =
+  '「集う・動く・学ぶ・装う」の目的別に、関西のがん患者さんとご家族が利用できる患者会・病院・支援団体の情報をまとめています。気になる団体の関連イベントもカレンダーで確認できます。';
+
+// カテゴリごとの title・description（ブラウザ側で切り替えるときにも使う）
+const metaFor = (cat: (typeof purposes)[number]) => {
+  const lead = (cat.desc || '')
+    .split('\n')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .join('、')
+    .replace(/。$/, '');
+  return {
+    title: `${cat.category}｜目的別情報｜がんテラス`,
+    description: `関西のがん患者さんとご家族向け「${cat.category}」の情報。${lead ? lead + '。' : ''}${cat.items.length}件を掲載しています。`,
+  };
+};
+---
+
+<Base title={TITLE} description={DESCRIPTION} path={paths.purpose} active="top">
+  <main class="container">
+    <h1 class="page-title">目的別情報</h1>
+
+    <nav class="cat-switch" id="cat-switch">
+      {
+        purposes.map((cat) => (
+          <button type="button" data-id={cat.id}>
+            {cat.category}
+          </button>
+        ))
+      }
+    </nav>
+
+    <!-- 全カテゴリをHTMLに書き出しておき、表示するカテゴリだけブラウザ側で切り替える -->
+    <section id="cat-body">
+      {
+        purposes.map((cat) => {
+          const meta = metaFor(cat);
+          return (
+            <div
+              class="cat-block"
+              data-id={cat.id}
+              data-title={meta.title}
+              data-description={meta.description}
+            >
+              <div class="cat-head">
+                <img src={cat.image} alt="" />
+                <div>
+                  <h2>{cat.category}</h2>
+                  <p>{cat.desc}</p>
+                </div>
+              </div>
+              <ul class="purpose-items">
+                {cat.items.map((item) => (
+                  <li>
+                    <span class="purpose-name">{item.title}</span>
+                    <span class="purpose-links">
+                      <a href={item.link} target="_blank" rel="noopener">
+                        サイトへ
+                      </a>
+                      <a href={calendarRelated(item.title)}>関連イベント</a>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })
+      }
+    </section>
+  </main>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      (function () {
+        var blocks = Array.prototype.slice.call(document.querySelectorAll('#cat-body .cat-block'));
+        var buttons = Array.prototype.slice.call(document.querySelectorAll('#cat-switch button'));
+        if (!blocks.length) return;
+
+        var BASE = 'https://gan-terrace.link/purpose';
+
+        function setMeta(selector, attr, value) {
+          var el = document.querySelector(selector);
+          if (el) el.setAttribute(attr, value);
+        }
+
+        function show(id) {
+          var current = blocks.filter(function (b) { return b.dataset.id === id; })[0] || blocks[0];
+
+          blocks.forEach(function (b) { b.style.display = b === current ? '' : 'none'; });
+          buttons.forEach(function (btn) {
+            btn.classList.toggle('active', btn.dataset.id === current.dataset.id);
+          });
+
+          // アドレスバーとメタ情報を、表示中のカテゴリに合わせる
+          history.replaceState(null, '', '/purpose?cat=' + encodeURIComponent(current.dataset.id));
+          var title = current.dataset.title;
+          var description = current.dataset.description;
+          document.title = title;
+          setMeta('meta[name="description"]', 'content', description);
+          setMeta('meta[property="og:title"]', 'content', title);
+          setMeta('meta[property="og:description"]', 'content', description);
+          setMeta('link[rel="canonical"]', 'href', BASE + '?cat=' + encodeURIComponent(current.dataset.id));
+        }
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () { show(btn.dataset.id); });
+        });
+
+        var cat = new URLSearchParams(window.location.search).get('cat');
+        show(cat || blocks[0].dataset.id);
+      })();
+    </script>
+  </Fragment>
+</Base>

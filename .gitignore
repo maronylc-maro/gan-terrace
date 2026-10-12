@@ -5,6 +5,11 @@ TODO.md
 # .github/workflows/ に置いたものが本体
 /sync-data.yml
 
+# Astro のビルド結果・依存パッケージ（毎回自動で作られる）
+node_modules/
+dist/
+.astro/
+
 # OS が作る不要ファイル
 .DS_Store
 Thumbs.db
