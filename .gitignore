@@ -14,3 +14,6 @@ dist/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ローカル用の環境変数（URLなどを書く。公開しない）
+.env
