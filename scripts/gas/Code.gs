@@ -2,10 +2,12 @@
  * まちの医療案内 用 Google Apps Script
  *
  * このスクリプト1本で2つの役割を担う。
- *   1. サイトのデータ配信  … GitHub Actions が ?type=data で呼び出し、events / news / facilities を取得する
+ *   1. サイトのデータ配信  … Cloudflare のビルドが ?type=data で呼び出し、events / news / facilities / purposes を取得する
  *   2. 「気になる」の集計   … サイトが件数の取得（GET）と加算（POST）に使う
  *
- * セットアップ手順はサイトのREADME「スプレッドシートとApps Scriptの設定」を参照。
+ * このほか、スプレッドシートのメニュー「がんテラス → サイトに反映」と、毎日の自動ビルドも担う（末尾の「3. サイトへの反映」）。
+ *
+ * セットアップ手順はリポジトリのREADMEを参照。
  */
 
 // このスクリプトを紐づけたスプレッドシートのID
@@ -168,7 +170,7 @@ function isKnownEventKey_(key) {
 
 /**
  * GET
- *   ?type=data … events / news / facilities を返す（GitHub Actions から）
+ *   ?type=data … events / news / facilities / purposes を返す（Cloudflare のビルドから）
  *   それ以外    … 「気になる」の件数を返す（サイトから）
  */
 function doGet(e) {
@@ -218,5 +220,54 @@ function doPost(e) {
     return json_({ ok: false, error: String(err) });
   } finally {
     lock.releaseLock();
+  }
+}
+
+
+// ===== 3. サイトへの反映 =====
+// Cloudflare のデプロイフック（ビルドを起動する専用URL）を呼んで、サイトを作り直す。
+// URL は公開されないよう、コードではなく「スクリプトプロパティ」DEPLOY_HOOK_URL に保存する。
+
+/** スプレッドシートを開いたとき、メニューを追加する */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('がんテラス')
+    .addItem('サイトに反映', 'publishSite')
+    .addToUi();
+}
+
+/** メニュー「サイトに反映」 */
+function publishSite() {
+  var ui = SpreadsheetApp.getUi();
+  var answer = ui.alert(
+    'サイトに反映します',
+    '入力した内容を公開サイトに反映します（数分かかります）。よろしいですか？',
+    ui.ButtonSet.OK_CANCEL
+  );
+  if (answer !== ui.Button.OK) return;
+
+  try {
+    triggerBuild_();
+    ui.alert('反映を開始しました', '数分後にサイトに反映されます。', ui.ButtonSet.OK);
+  } catch (err) {
+    ui.alert('反映を開始できませんでした', String(err), ui.ButtonSet.OK);
+  }
+}
+
+/** 毎日の自動ビルド（時間トリガーから呼ばれる。午前4〜5時に設定） */
+function dailyRebuild() {
+  triggerBuild_();
+}
+
+/** Cloudflareのビルドを起動する（デプロイフックを呼ぶ） */
+function triggerBuild_() {
+  var url = PropertiesService.getScriptProperties().getProperty('DEPLOY_HOOK_URL');
+  if (!url) {
+    throw new Error('DEPLOY_HOOK_URL が設定されていません');
+  }
+  var res = UrlFetchApp.fetch(url, { method: 'post', muteHttpExceptions: true });
+  var code = res.getResponseCode();
+  if (code < 200 || code >= 300) {
+    throw new Error('ビルドを起動できませんでした（HTTP ' + code + '）');
   }
 }
