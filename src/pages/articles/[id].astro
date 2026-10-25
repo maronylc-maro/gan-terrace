@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import { articles, img, type Article } from '../../lib/cms';
+import { formatDate } from '../../lib/data';
+import { articlePath, canonical, paths, SITE_URL } from '../../lib/urls';
+
+export function getStaticPaths() {
+  return articles.map((article) => ({ params: { id: article.id }, props: { article } }));
+}
+
+const { article } = Astro.props as { article: Article };
+
+const path = articlePath(article.id);
+const isPage = article.kind === '固定ページ';
+const ogImage = article.eyecatch
+  ? img(article.eyecatch.url, 'w=1200&h=630&fit=crop&fm=jpg')
+  : undefined;
+
+// 検索エンジン向けの構造化データ
+const jsonLd = isPage
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: article.title,
+      description: article.description,
+      url: canonical(path),
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: article.title,
+      description: article.description,
+      image: ogImage ? [ogImage] : undefined,
+      datePublished: article.publishedAt,
+      dateModified: article.revisedAt,
+      mainEntityOfPage: canonical(path),
+      author: { '@type': 'Organization', name: 'がんテラス', url: SITE_URL },
+      publisher: { '@type': 'Organization', name: 'がんテラス', url: SITE_URL },
+    };
+---
+
+<Base
+  title={`${article.title}｜がんテラス`}
+  description={article.description}
+  path={path}
+  active="articles"
+  ogType="article"
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
+  <main class="container">
+    <article class={`article article--${article.kind}`}>
+      <header class="article-header">
+        {
+          !isPage && (
+            <p class="article-meta">
+              <span class={`kind-badge kind-${article.kind}`}>{article.kind}</span>
+              <time class="article-date" datetime={article.date}>
+                {formatDate(article.date)}
+              </time>
+            </p>
+          )
+        }
+        <h1 class="article-title">{article.title}</h1>
+        {article.description && <p class="article-lead">{article.description}</p>}
+      </header>
+
+      {
+        article.eyecatch && (
+          <img
+            class="article-eyecatch"
+            src={img(article.eyecatch.url, 'w=960&fm=webp')}
+            alt=""
+            width={article.eyecatch.width}
+            height={article.eyecatch.height}
+          />
+        )
+      }
+
+      <div class="article-body" set:html={article.body} />
+
+      {
+        !isPage && article.updated !== article.date && (
+          <p class="article-updated">
+            更新日：<time datetime={article.updated}>{formatDate(article.updated)}</time>
+          </p>
+        )
+      }
+
+      <p class="article-back"><a href={paths.articles}>← 読みもの一覧へ</a></p>
+    </article>
+  </main>
+</Base>
