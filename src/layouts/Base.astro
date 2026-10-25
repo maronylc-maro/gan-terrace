@@ -8,18 +8,25 @@ interface Props {
   /** このページのパス（canonical に使う）。例: '/purpose' */
   path: string;
   /** メニューで強調する項目 */
-  active?: 'top' | 'event' | 'news' | 'links';
+  active?: 'top' | 'event' | 'news' | 'articles' | 'links';
   /** トップページだけ、見出し(h1)とキャッチコピーを表示する */
   home?: boolean;
+  /** SNS共有などに使う画像のURL（記事のアイキャッチなど） */
+  ogImage?: string;
+  /** ページの種類（記事は 'article'） */
+  ogType?: 'website' | 'article';
+  /** 検索エンジン向けの構造化データ（JSON-LD） */
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, path, active, home = false } = Astro.props;
+const { title, description, path, active, home = false, ogImage, ogType = 'website', jsonLd } = Astro.props;
 const url = canonical(path);
 
 const nav = [
   { key: 'top', label: 'TOP', href: `${paths.home}#purpose` },
   { key: 'event', label: 'イベント', href: paths.calendar },
   { key: 'news', label: '新着一覧', href: `${paths.home}#news` },
+  { key: 'articles', label: '読みもの', href: paths.articles },
   { key: 'links', label: 'リンク集', href: paths.facilities },
 ];
 ---
@@ -31,14 +38,25 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="がんテラス" />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content={url} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
     <link rel="canonical" href={url} />
     <link rel="stylesheet" href="/css/style.css" />
+    {
+      jsonLd && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')}
+        />
+      )
+    }
   </head>
   <body>
     <header class="site-header">

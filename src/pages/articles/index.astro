@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import { articles, img, LISTED_KINDS } from '../../lib/cms';
+import { formatDate } from '../../lib/data';
+import { articlePath, paths } from '../../lib/urls';
+
+const TITLE = '読みもの｜がんテラス';
+const DESCRIPTION =
+  '会場までの道案内、がんテラスからのお知らせ、関西のがん患者さんとご家族に役立つ情報を読みものとしてまとめています。';
+
+// 公開日の新しい順。固定ページは一覧に出さない
+const list = articles.filter((a) => (LISTED_KINDS as string[]).includes(a.kind));
+---
+
+<Base title={TITLE} description={DESCRIPTION} path={paths.articles} active="articles">
+  <main class="container">
+    <h1 class="page-title">読みもの</h1>
+    <p class="articles-intro">道案内やお知らせなど、がんテラスからの読みものです。</p>
+
+    {
+      list.length > 0 && (
+        <nav class="cat-switch" id="kind-switch" aria-label="種類で絞り込む">
+          <button type="button" data-kind="" class="active">
+            すべて
+          </button>
+          {LISTED_KINDS.map((kind) => (
+            <button type="button" data-kind={kind}>
+              {kind}
+            </button>
+          ))}
+        </nav>
+      )
+    }
+
+    <ul class="article-cards" id="article-cards">
+      {
+        list.map((a) => (
+          <li class="article-card" data-kind={a.kind}>
+            <a href={articlePath(a.id)}>
+              {a.eyecatch && (
+                <img
+                  class="article-card-img"
+                  src={img(a.eyecatch.url, 'w=480&h=270&fit=crop&fm=webp')}
+                  alt=""
+                  width="480"
+                  height="270"
+                  loading="lazy"
+                />
+              )}
+              <div class="article-card-body">
+                <p class="article-meta">
+                  <span class={`kind-badge kind-${a.kind}`}>{a.kind}</span>
+                  <span class="article-date">{formatDate(a.date)}</span>
+                </p>
+                <h2 class="article-card-title">{a.title}</h2>
+                <p class="article-card-desc">{a.description}</p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {list.length === 0 && <p class="empty-note">まだ読みものはありません</p>}
+  </main>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      // 種類で絞り込む（全記事はHTMLに入っていて、表示だけ切り替える）
+      (function () {
+        var buttons = document.querySelectorAll('#kind-switch button');
+        var cards = document.querySelectorAll('#article-cards .article-card');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var kind = btn.getAttribute('data-kind');
+            buttons.forEach(function (b) { b.classList.toggle('active', b === btn); });
+            cards.forEach(function (card) {
+              card.style.display = !kind || card.getAttribute('data-kind') === kind ? '' : 'none';
+            });
+          });
+        });
+      })();
+    </script>
+  </Fragment>
+</Base>
