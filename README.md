@@ -5,19 +5,22 @@
 ソースコードは GitHub で管理し、`main` に push されるか、デプロイフックが呼ばれると、
 Cloudflare が自動でビルド（`npm run build`）して公開する。
 
-ビルドのたびに、スプレッドシートに紐づく Apps Script からデータを直接取得して、
+ビルドのたびに、スプレッドシートに紐づく Apps Script からデータを、microCMS から記事を直接取得して、
 中身の入った HTML を作る。Google Cloud やサービスアカウントは使わない。
 
 ## 日々の運用（運営者の作業）
-1. スプレッドシートを編集する
-2. メニュー「がんテラス → サイトに反映」を押す（PCのブラウザ版のみ。スマホアプリにはメニューが出ない）
-3. 数分でサイトに反映される
+| 更新するもの | 操作 | 反映 |
+|---|---|---|
+| イベント・お知らせ・リンク集・目的別情報 | スプレッドシートを編集 → メニュー「がんテラス → サイトに反映」（PCのブラウザ版のみ。スマホアプリにはメニューが出ない） | 数分 |
+| 読みもの（記事・ページ） | microCMS で「公開」「更新」（自動でビルドが始まる） | 数分 |
+| 何もしない日 | なし | 毎日午前4時半ごろに自動で作り直し |
 
 - 反映を忘れても、毎日午前4〜5時ごろに自動でビルドされ、最新の内容になる
 - 日付が過ぎたイベントは、ビルドのたびにHTML上の一覧から外れる（カレンダー表示には残る）
 - 反映されないときは、Cloudflare の `Workers & Pages` → `gan-terrace` → `デプロイ` で、ビルドが「失敗しました」になっていないか確認する。
-  失敗してもサイトは直前の状態のまま残る
-- スプレッドシートの `purposes` シートが空だったり、Apps Script に接続できなかったりすると、ビルドは失敗する（古いデータや空のデータで公開しないための仕様）
+  失敗してもサイトは直前の状態のまま残る。ビルドの一覧の「コミットメッセージ」欄の `spreadsheet` はスプレッドシート（メニューと毎朝）、`microcms` は記事の公開・更新がきっかけ
+- 毎朝の自動更新が失敗すると、Google から「ビルドを起動できませんでした（HTTP 500）」のようなメールが届く。Cloudflare 側の一時的なエラーのことがある。メニュー「サイトに反映」でビルドが始まるか確認する
+- スプレッドシートの `purposes` シートが空だったり、Apps Script や microCMS に接続できなかったりすると、ビルドは失敗する（古いデータや空のデータで公開しないための仕様）
 
 ## 1. 公開の仕組み（Cloudflare）
 `Workers & Pages` → `gan-terrace` の設定
@@ -26,10 +29,14 @@ Cloudflare が自動でビルド（`npm run build`）して公開する。
 |---|---|
 | ビルドコマンド | `npm run build`（本番・ブランチの両方） |
 | デプロイコマンド | `npx wrangler deploy` |
-| 変数 `SHEETS_API_URL` | Apps Script のウェブアプリURL（ビルド用の変数。本番・ブランチの両方） |
-| デプロイフック | 名前 `spreadsheet`、ブランチ `main`（URLは Apps Script のスクリプトプロパティに保存） |
+| 変数 `SHEETS_API_URL` | Apps Script のウェブアプリURL（ビルド用の変数） |
+| 変数 `MICROCMS_SERVICE_DOMAIN` | microCMS のサービスID（`gan-terrace`）（ビルド用の変数） |
+| シークレット `MICROCMS_API_KEY` | microCMS のAPIキー（ビルド用のシークレット） |
+| デプロイフック `spreadsheet` | ブランチ `main`。URLは Apps Script のスクリプトプロパティ `DEPLOY_HOOK_URL` に保存 |
+| デプロイフック `microcms` | ブランチ `main`。URLは microCMS の Webhook 設定に保存 |
 | 公開するフォルダ | `wrangler.jsonc` の `assets.directory`（`./dist`） |
 
+- 変数とシークレットは、**ブランチごとに別設定**。新しい作業用ブランチを作ったときは、そのブランチ側にもビルドコマンドと上の変数を設定する（本番側は設定済み）
 - Node.js のバージョンは `.node-version` で指定している
 - `robots.txt` は Cloudflare が自動で先頭にAIの利用条件の宣言文を付け足して配信する（AIクローラーの拒否設定は入っていない）
 - ページのURLは拡張子なし（`/calendar` など）。`/calendar.html` は `/calendar` に転送される
@@ -94,6 +101,33 @@ Cloudflare が自動でビルド（`npm run build`）して公開する。
 > このスクリプトが返すイベント・お知らせ・施設リンク集・目的別情報のデータだけ（いずれもサイトに載せる情報）。
 > スプレッドシート本体は非公開のまま。
 
+## 3-2. microCMS（読みもの）の設定
+無料プラン（Hobby）で、サービスID `gan-terrace`、API は1つだけ。
+
+**API「記事」（エンドポイント `articles`、リスト形式）**
+
+| 表示名 | フィールドID | 種類 | 備考 |
+|---|---|---|---|
+| タイトル | `title` | テキストフィールド | 必須 |
+| 種類 | `kind` | セレクトフィールド | `道案内` / `ブログ` / `お知らせ` / `固定ページ`。複数選択オフ、必須 |
+| 説明文 | `description` | テキストエリア | 必須。検索結果に出る文章（80字前後） |
+| アイキャッチ | `eyecatch` | 画像 | 任意 |
+| 本文 | `body` | リッチエディタ | 必須。下記の設定 |
+
+- 本文の文字色：色のプリセットのみ（`#2F7A6B` 緑・強調／`#B4623F` 赤茶・注意／`#667770` 灰・補足）。カラーピッカーは非表示
+- 本文の文字サイズ：プリセット 85%（小さめ）と 120%（大きめ）
+- 本文のカスタムclass：`note-box`（注意書きの囲み）
+- Webhook（API設定 → Webhook → カスタム通知）：Cloudflare のデプロイフック `microcms` のURLを登録。通知するタイミングは、公開時・更新時（管理画面・予約設定の公開、コンテンツIDの変更、公開日時の変更）、公開終了時（管理画面・予約設定）、公開中コンテンツの削除時
+- APIキー：サービス設定 → APIキー（`記事` のGETを許可）。Cloudflare のシークレット `MICROCMS_API_KEY` に登録する
+
+記事のアドレスは `/articles/（コンテンツID）`。記事は `src/lib/cms.ts` がビルド時に取得し、
+`src/pages/articles/` が一覧と詳細ページを作る。本文のHTMLは、見出しを1段下げ、画像を軽くし、表を横スクロールできるように整えて出力する。
+種類ごとの見た目は `public/css/style.css` の「読みもの（記事）」の部分で調整する。
+
+- 一覧（`/articles`）とトップページの「お知らせ・読みもの新着」には、道案内・ブログ・お知らせだけが出る（固定ページは出ない）
+- 道案内は、本文の最初の表が緑の枠の「案内ボックス」になる
+- 下書き保存の記事は、サイトにも出ず、ビルドも始まらない
+
 ## 4. 「気になる」ボタン
 イベント詳細に表示される「👍 気になる」の件数は、手順3と同じApps Scriptに記録される。
 
@@ -110,7 +144,12 @@ URLが空のあいだはボタン自体が表示されない。
 
 ## 5. ローカルでの確認（開発者向け）
 1. `npm install`
-2. リポジトリ直下に `.env` を作り、`SHEETS_API_URL=（ウェブアプリのURL）` と書く（`.env` はGitに載らない）
+2. リポジトリ直下に `.env` を作り、次の3行を書く（`.env` はGitに載らない）
+   ```
+   SHEETS_API_URL=（ウェブアプリのURL）
+   MICROCMS_SERVICE_DOMAIN=gan-terrace
+   MICROCMS_API_KEY=（microCMSのAPIキー）
+   ```
 3. `npm run build` でビルド、`npm run preview` で確認する
 
 PowerShell で `npm` が実行できないときは、そのターミナルで
@@ -132,7 +171,9 @@ PowerShell で `npm` が実行できないときは、そのターミナルで
 | `src/pages/purpose.astro` | `/purpose` | 目的別情報の詳細。`/purpose?cat=talk` の形で開き、上部のボタンでカテゴリを切り替える |
 | `src/pages/calendar.astro` | `/calendar` | イベントカレンダー（月／週／リスト表示、Googleカレンダー追加） |
 | `src/pages/facilities.astro` | `/facilities` | 施設・団体リンク集 |
-| `src/pages/sitemap.xml.ts` | `/sitemap.xml` | 検索エンジン向けのページ一覧（`src/pages/` のページから自動で作られる） |
+| `src/pages/articles/index.astro` | `/articles` | 読みもの一覧（種類で絞り込める） |
+| `src/pages/articles/[id].astro` | `/articles/（コンテンツID）` | 記事ページ（種類ごとに見た目が少し違う。構造化データ・アイキャッチ画像つき） |
+| `src/pages/sitemap.xml.ts` | `/sitemap.xml` | 検索エンジン向けのページ一覧（`src/pages/` のページと、microCMS の記事から自動で作られる） |
 
 ## ファイル構成
 | 場所 | 内容 |
@@ -140,6 +181,7 @@ PowerShell で `npm` が実行できないときは、そのターミナルで
 | `src/pages/` | 各ページ |
 | `src/layouts/Base.astro` | 全ページ共通の枠（ヘッダー・フッター・メタ情報） |
 | `src/lib/data.ts` | ビルド時にApps Scriptからデータを取得して整える処理 |
+| `src/lib/cms.ts` | ビルド時にmicroCMSから記事を取得して整える処理 |
 | `src/lib/urls.ts` | 公開URLやページのパスの定義 |
 | `public/` | そのまま公開されるファイル（`css/` `js/` `images/` `robots.txt` ほか） |
 | `public/js/config.js` | 「気になる」ボタンのURL設定 |
@@ -147,3 +189,12 @@ PowerShell で `npm` が実行できないときは、そのターミナルで
 | `astro.config.mjs` | Astro の設定（公開URL、出力形式） |
 | `wrangler.jsonc` | Cloudflare に公開するフォルダの指定 |
 | `.node-version` | ビルドに使う Node.js のバージョン |
+
+## 秘密情報の扱い
+| 情報 | 置き場所 | 置いてはいけない場所 |
+|---|---|---|
+| microCMS のAPIキー | Cloudflare のシークレット、手元の `.env` | リポジトリ、ブラウザに送るJS |
+| デプロイフックのURL | Apps Script のスクリプトプロパティ、microCMS の Webhook 設定 | リポジトリ、スプレッドシートのセル、チャット |
+| スプレッドシートID | Apps Script のコード（Apps Script 側だけ） | リポジトリ（`scripts/gas/Code.gs` は仮の文字列のまま） |
+
+デプロイフックのURLは、知っていれば誰でもビルドを起動できる。
