@@ -27,13 +27,33 @@ const otherNews = [
   .slice(0, 20);
 ---
 
-<Base title={TITLE} description={DESCRIPTION} path="/" home>
-  <main class="container top-main">
-    <p class="top-intro">
-      大阪・兵庫・奈良の、がん患者会・がんサロン・アピアランスケア・相談窓口を探せます。
-    </p>
+<Base title={TITLE} description={DESCRIPTION} path="/">
+  <section class="hero">
+    <svg class="hero-leaf" aria-hidden="true" viewBox="0 0 600 600" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M300 400C420 300 520 120 470 40C430 -10 340 80 300 400"></path>
+      <path d="M300 400C220 330 120 230 80 250C40 280 140 360 300 400"></path>
+      <path d="M300 400C340 470 420 520 600 500"></path>
+      <path d="M300 400C280 470 240 540 170 600"></path>
+    </svg>
+    <div class="hero-inner">
+      <p class="hero-area">
+        <svg class="hero-mark" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3c-2.8 0-4.5 2-4.5 4.2 0 2.2 1.6 4 3.2 6.1L7 21h3l2-4.2L14 21h3l-3.7-7.7c1.6-2.1 3.2-3.9 3.2-6.1C16.5 5 14.8 3 12 3zM12 5.2c1.4 0 2.3 1 2.3 2.1 0 1.1-.9 2.3-2.3 4-1.4-1.7-2.3-2.9-2.3-4 0-1.1.9-2.1 2.3-2.1z"/></svg>
+        <span>大阪・兵庫・奈良</span>
+      </p>
+      <h1 class="hero-title">がんテラス</h1>
+      <p class="hero-lead">関西のがん患者さんとご家族の<br />「見つける」ポータルサイト</p>
+      <p class="hero-text">
+        大阪・兵庫・奈良の、がん患者会・がんサロン・アピアランスケア・相談窓口を探せます。
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#purpose">目的から探す</a>
+        <a class="btn-outline" href="/calendar">イベントカレンダー</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="block anchor-target" id="purpose">
+  <main class="top-main">
+    <section class="top-purpose anchor-target" id="purpose">
       <div class="block-head">
         <h2>目的別情報</h2>
       </div>
@@ -41,21 +61,21 @@ const otherNews = [
         {
           purposes.map((cat) => (
             <a class="purpose-card" href={purposeCat(cat.id)}>
+              <img src={cat.image} alt="" loading="lazy" />
               <h3>{cat.category}</h3>
-              <div class="purpose-card-body">
-                <img src={cat.image} alt={cat.category} loading="lazy" />
-                <p class="purpose-desc">{cat.desc}</p>
-              </div>
+              <p class="purpose-desc">{cat.desc}</p>
+              <span class="purpose-more">一覧を見る →</span>
             </a>
           ))
         }
       </div>
     </section>
 
-    <section class="block anchor-target" id="news">
-      <div class="block-head">
-        <h2>新着一覧</h2>
-      </div>
+  </main>
+
+  <section class="news-band anchor-target" id="news">
+    <div class="news-band-inner">
+      <h2>新着一覧</h2>
       <div class="news-columns">
         <div class="news-col">
           <h3>イベント新着</h3>
@@ -112,8 +132,8 @@ const otherNews = [
           </ul>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <Fragment slot="scripts">
   <script is:inline>
